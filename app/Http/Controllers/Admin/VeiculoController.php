@@ -18,7 +18,7 @@ use App\Models\PneusAplicados;
 use App\Models\RegistroCompraVenda;
 use App\Models\SubCategoriaVeiculo;
 use App\Models\TipoCategoria;
-use App\Models\TipoCombustivel;
+use App\Modules\Abastecimentos\Models\TipoCombustivel;
 use App\Models\TipoEquipamento;
 use App\Models\TipoOperacao;
 use App\Models\TipoVeiculo;

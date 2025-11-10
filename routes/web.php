@@ -332,7 +332,8 @@ Route::group([
         Route::delete('/telefones/{id}', [TelefoneController::class, 'destroy']);
     });
 
-    require __DIR__ . '/abastecimentos.php';
+    // Módulo de Abastecimentos (estrutura modular)
+    require __DIR__ . '/modules/abastecimentos.php';
     require __DIR__ . '/atrelamentoveiculos.php';
     require __DIR__ . '/certificados.php';
     require __DIR__ . '/compras.php';
@@ -349,7 +350,7 @@ Route::group([
     require __DIR__ . '/listagemoslacamentoservicorateio.php';
     require __DIR__ . '/manutencao.php';
     require __DIR__ . '/manutencaocategoria.php';
-    require __DIR__ . '/relatoriosabastecimento.php';
+    // Relatórios de Abastecimentos movidos para o módulo modular
     require __DIR__ . '/manutencaopreordemservicofinalizada.php';
     require __DIR__ . '/manutencaoservico.php';
     require __DIR__ . '/manutencaoservicos.php';
