@@ -1,0 +1,352 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none !important;
+}
+
+label {
+    color: #333 !important;
+}
+
+.cor_botao {
+    color: #fff !important;
+}
+
+.vscomp-toggle-button {
+    background-color: #fff;
+    /* Fundo claro */
+    border: 1px solid #d1d5db;
+    /* Borda cinza clara */
+    border-radius: 6px;
+    /* Cantos arredondados */
+    padding: 10px 15px;
+    /* Espaçamento interno */
+    font-size: 14px;
+    /* Tamanho da fonte */
+    font-family: Arial, sans-serif;
+    /* Fonte padrão */
+    color: #333;
+    /* Texto cinza escuro */
+    outline: none;
+    height: 48px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    /* Animações suaves */
+    width: 100%;
+}
+
+.vscomp-toggle-button .vscomp-clear-button {
+    position: absolute;
+    right: 25px;
+    /* Posiciona no lado direito */
+    top: 50%;
+    /* Centraliza verticalmente */
+    background-color: #f3f4f6;
+    /* Fundo cinza claro */
+    border: 1px solid #d1d5db;
+    /* Borda cinza clara */
+    border-radius: 50%;
+    /* Forma circular */
+    width: 18px;
+    /* Tamanho do botão */
+    height: 18px;
+    /* Tamanho do botão */
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    position: relative;
+    top: 10px;
+}
+
+.success {
+    color: green;
+    font-size: 0.9em;
+    position: relative;
+    top: 10px;
+}
+
+.signature-pad {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 300px;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.input-glass {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.document-interface {
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.document-interface .icon {
+    color: #6b7280;
+    font-size: 24px;
+}
+
+.document-interface .text {
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.transition-opacity {
+    transition: opacity 0.3s ease;
+}
+
+#table-loading {
+    transition: opacity 0.3s ease;
+}
+
+.dropdown-active,
+.dropdown-active * {
+    overflow: visible !important;
+}
+
+.dropdown-active {
+    z-index: 30 !important;
+}
+
+[role="listbox"] {
+    z-index: 50 !important;
+}
+
+[x-data*="simpleSelect"],
+[x-data*="searchableSelect"] {
+    position: relative !important;
+    z-index: 40 !important;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    gap: 6px;
+    padding-left: 0;
+    justify-content: center;
+}
+
+.pagination li {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pagination li:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-color: #007bff;
+}
+
+.pagination .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.pagination li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* CSS para campos com permissão em Veiculos */
+.campo-permissao-wrapper input[readonly] {
+    background-color: #f9fafb !important;
+    cursor: not-allowed;
+    border-color: #d1d5db;
+    color: #6b7280;
+}
+
+.campo-permissao-wrapper .bg-gray-100 {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+}
+
+.campo-permissao-wrapper small {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: 500;
+}
+
+/* Indicador visual para campos com permissão */
+.campo-permissao-wrapper label::after {
+    content: " 🔐";
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.campo-permissao-wrapper input:not([readonly])+small {
+    color: #059669;
+}
+
+.dropdown-active {
+    overflow: visible !important;
+    z-index: 30;
+}
+
+[x-data*="simpleSelect"] [role="listbox"] {
+    z-index: 50;
+}
+
+.smart-select-container {
+    position: relative;
+    z-index: 40;
+}
+
+/* Adicionando estilos para garantir que não haja overflow horizontal */
+.overflow-x-auto {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Garantir que a largura máxima seja respeitada */
+.container-fluid {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+/* Garantir que tabelas responsivas não causem overflow */
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Estilos para telas maiores (desktop) */
+@media screen and (max-width: 1366px) {
+
+    .resolution {
+        font-size: 16px;
+        width: 65%;
+    }
+}
+
+/* Estilos para telas menores ou iguais a 768px (tablets e celulares) */
+@media screen and (max-width: 768px) {
+    .resolution {
+        font-size: 14px;
+        width: 100%;
+        /* Ocupa a largura total */
+    }
+}
+
+
+
+.botao-flutuante:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    text-decoration: none;
+    color: #fff;
+}
+
+.botao-scroll-left {
+    position: fixed;
+    /* ← muda de absolute para fixed */
+    bottom: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 12px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Posição à esquerda do outro botão */
+}
+
+.botao-scroll-right {
+    position: fixed;
+    /* ← muda de absolute para fixed */
+    bottom: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 12px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}

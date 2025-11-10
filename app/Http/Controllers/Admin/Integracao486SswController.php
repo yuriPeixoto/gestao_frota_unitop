@@ -1,0 +1,347 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\AbastecimentoManual;
+use App\Models\CategoriaVeiculo;
+use App\Models\Departamento;
+use App\Models\Filial;
+use App\Models\Fornecedor;
+use App\Models\TipoCombustivel;
+use App\Models\TipoEquipamento;
+use App\Models\Veiculo;
+use Illuminate\Http\Request;
+use App\Traits\JasperServerIntegration;
+use Illuminate\Support\Facades\Log;
+
+class Integracao486SswController extends Controller
+{
+    public function index(Request $request)
+    {
+
+        $abastecimentos = AbastecimentoManual::query();;
+
+        $veiculos = $this->getVeiculos();
+
+        $fornecedores = $this->getFornecedor();
+
+        return view('admin.integracao486Ssw.index', compact(
+            'veiculos',
+            'fornecedores',
+        ));
+    }
+
+
+    public function onImprimir(Request $request)
+    {
+        Log::info('=== DEBUG COMPLETO ===');
+        Log::info('Método HTTP: ' . $request->method());
+        Log::info('Todos os inputs: ', $request->all());
+
+        try {
+            // Receber como arrays ou converter para arrays se necessário
+            $fornecedor = $request->input('id_fornecedor', []);
+            $veiculo = $request->input('id_veiculo', []);
+
+            // Converter strings em arrays se necessário
+            if (!is_array($fornecedor) && !empty($fornecedor)) {
+                $fornecedor = [$fornecedor];
+            }
+
+            if (!is_array($veiculo) && !empty($veiculo)) {
+                $veiculo = [$veiculo];
+            }
+
+            // Verificar se as datas foram informadas
+            if (!$request->input('data_inclusao') || !$request->input('data_final_abastecimento')) {
+                return back()->withNotification([
+                    'title'   => 'Erro!',
+                    'type'    => 'error',
+                    'message' => 'Atenção: Informe a data inicial e final para emissão do relatório.'
+                ]);
+            }
+
+            // Processar filtros
+            if (empty($fornecedor)) {
+                $in_fornecedor  = '!=';
+                $id_fornecedor  = '0';
+            } else {
+                $in_fornecedor  = 'IN';
+                $id_fornecedor  = implode(",", $fornecedor);
+            }
+
+            if (empty($veiculo)) {
+                $in_veiculo  = '!=';
+                $id_veiculo  = '0';
+            } else {
+                $in_veiculo  = 'IN';
+                $id_veiculo  = implode(",", $veiculo);
+            }
+
+            // Processar datas
+            $datainicial = \Carbon\Carbon::parse($request->input('data_inclusao'))->format('Y-m-d');
+            $datafinal = \Carbon\Carbon::parse($request->input('data_final_abastecimento'))->format('Y-m-d');
+
+
+
+            $parametros = array(
+                'P_data_inicial'  => $datainicial,
+                'P_data_final'    => $datafinal,
+                'P_in_fornecedor' => $in_fornecedor,
+                'P_id_fornecedor' => $id_fornecedor,
+                'P_in_placa'      => $in_veiculo,
+                'P_id_placa'      => $id_veiculo
+            );
+
+            Log::info('Parâmetros processados: ', $parametros);
+
+            // Resto da lógica do relatório...
+            $name = 'Abastecimento_Integracao_486_ssw_v1';
+            $agora = date('d-m-YH:i');
+            $tipo = '.pdf';
+            $relatorio = $name . $agora . $tipo;
+
+            $partes = parse_url('http://' . $_SERVER['SERVER_NAME'] . $_SERVER["REQUEST_URI"]);
+            $host = $partes['host'] . PHP_EOL;
+            $pathrel = (explode('.', $host));
+            $dominio = $pathrel[0];
+
+            if ($dominio == '127' || $dominio == 'localhost' || strpos($host, '127.0.0.1') !== false) {
+                $jasperserver = 'http://www.unitopconsultoria.com.br:9088/jasperserver';
+                $pastarelatorio = '/reports/homologacao/' . $name;
+
+                Log::info('Usando servidor de homologação');
+            } elseif ($dominio == 'lcarvalima') {
+                $jasperserver = 'http://10.10.1.8:8080/jasperserver';
+                $input = '/reports/carvalima/' . $name;
+
+                // Verificar se o diretório existe antes de tentar chmod
+                if (is_dir($input)) {
+                    chmod($input, 0777);
+                    Log::info('Permissões do diretório alteradas: ' . $input);
+                } else {
+                    Log::warning('Diretório não encontrado: ' . $input);
+                }
+
+                $pastarelatorio = $input;
+
+                Log::info('Usando servidor de produção');
+            } else {
+                $jasperserver = 'http://10.10.1.8:8080/jasperserver';
+                $input = '/reports/' . $dominio . '/' . $name;
+
+                // Verificar se o diretório existe antes de tentar chmod
+                if (is_dir($input)) {
+                    chmod($input, 0777);
+                    Log::info('Permissões do diretório alteradas: ' . $input);
+                } else {
+                    Log::warning('Diretório não encontrado: ' . $input);
+                }
+
+                $pastarelatorio = $input;
+
+                Log::info('Usando servidor de produção');
+            }
+
+            $jsi = new jasperserverintegration(
+                $jasperserver,
+                $pastarelatorio,
+                'pdf',
+                'unitop',
+                'unitop2022',
+                $parametros
+            );
+
+            try {
+                $data = $jsi->execute();
+                return response($data, 200)
+                    ->header('Content-Type', 'application/pdf')
+                    ->header('Content-Disposition', 'inline; filename="' . $relatorio . '"');
+            } catch (\Exception $e) {
+                Log::error('Erro ao gerar relatório: ' . $e->getMessage());
+                return back()->withNotification([
+                    'title'   => 'Erro!',
+                    'type'    => 'error',
+                    'message' => 'Não foi possível gerar o relatório. ' . $e->getMessage()
+                ]);
+            }
+        } catch (\Exception $e) {
+            Log::error('Erro geral: ' . $e->getMessage());
+            return back()->withNotification([
+                'title'   => 'Erro!',
+                'type'    => 'error',
+                'message' => 'Erro inesperado: ' . $e->getMessage()
+            ]);
+        }
+    }
+
+    public function onImprimirExcel(Request $request)
+    {
+        Log::info('=== DEBUG COMPLETO ===');
+        Log::info('Método HTTP: ' . $request->method());
+        Log::info('Todos os inputs: ', $request->all());
+
+        try {
+            // Receber como arrays ou converter para arrays se necessário
+            $fornecedor = $request->input('id_fornecedor', []);
+            $veiculo = $request->input('id_veiculo', []);
+
+            // Converter strings em arrays se necessário
+            if (!is_array($fornecedor) && !empty($fornecedor)) {
+                $fornecedor = [$fornecedor];
+            }
+
+            if (!is_array($veiculo) && !empty($veiculo)) {
+                $veiculo = [$veiculo];
+            }
+
+            // Verificar se as datas foram informadas
+            if (!$request->input('data_inclusao') || !$request->input('data_final_abastecimento')) {
+                return back()->withNotification([
+                    'title'   => 'Erro!',
+                    'type'    => 'error',
+                    'message' => 'Atenção: Informe a data inicial e final para emissão do relatório.'
+                ]);
+            }
+
+            // Processar filtros
+            if (empty($fornecedor)) {
+                $in_fornecedor  = '!=';
+                $id_fornecedor  = '0';
+            } else {
+                $in_fornecedor  = 'IN';
+                $id_fornecedor  = implode(",", $fornecedor);
+            }
+
+            if (empty($veiculo)) {
+                $in_veiculo  = '!=';
+                $id_veiculo  = '0';
+            } else {
+                $in_veiculo  = 'IN';
+                $id_veiculo  = implode(",", $veiculo);
+            }
+
+            // Processar datas
+            $datainicial = \Carbon\Carbon::parse($request->input('data_inclusao'))->format('Y-m-d');
+            $datafinal = \Carbon\Carbon::parse($request->input('data_final_abastecimento'))->format('Y-m-d');
+
+
+
+            $parametros = array(
+                'P_data_inicial'  => $datainicial,
+                'P_data_final'    => $datafinal,
+                'P_in_fornecedor' => $in_fornecedor,
+                'P_id_fornecedor' => $id_fornecedor,
+                'P_in_placa'      => $in_veiculo,
+                'P_id_placa'      => $id_veiculo
+            );
+
+            Log::info('Parâmetros processados: ', $parametros);
+
+            // Resto da lógica do relatório...
+            $name = 'Abastecimento_Integracao_486_ssw_v1';
+            $agora = date('d-m-YH:i');
+            $tipo = '.xls';
+            $relatorio = $name . $agora . $tipo;
+
+            $partes = parse_url('http://' . $_SERVER['SERVER_NAME'] . $_SERVER["REQUEST_URI"]);
+            $host = $partes['host'] . PHP_EOL;
+            $pathrel = (explode('.', $host));
+            $dominio = $pathrel[0];
+
+            if ($dominio == '127' || $dominio == 'localhost' || strpos($host, '127.0.0.1') !== false) {
+                $jasperserver = 'http://www.unitopconsultoria.com.br:9088/jasperserver';
+                $pastarelatorio = '/reports/homologacao/' . $name;
+
+                Log::info('Usando servidor de homologação');
+            } elseif ($dominio == 'lcarvalima') {
+                $jasperserver = 'http://10.10.1.8:8080/jasperserver';
+                $input = '/reports/carvalima/' . $name;
+
+                // Verificar se o diretório existe antes de tentar chmod
+                if (is_dir($input)) {
+                    chmod($input, 0777);
+                    Log::info('Permissões do diretório alteradas: ' . $input);
+                } else {
+                    Log::warning('Diretório não encontrado: ' . $input);
+                }
+
+                $pastarelatorio = $input;
+
+                Log::info('Usando servidor de produção');
+            } else {
+                $jasperserver = 'http://10.10.1.8:8080/jasperserver';
+                $input = '/reports/' . $dominio . '/' . $name;
+
+                // Verificar se o diretório existe antes de tentar chmod
+                if (is_dir($input)) {
+                    chmod($input, 0777);
+                    Log::info('Permissões do diretório alteradas: ' . $input);
+                } else {
+                    Log::warning('Diretório não encontrado: ' . $input);
+                }
+
+                $pastarelatorio = $input;
+
+                Log::info('Usando servidor de produção');
+            }
+
+            $jsi = new jasperserverintegration(
+                $jasperserver,
+                $pastarelatorio,
+                'xls',
+                'unitop',
+                'unitop2022',
+                $parametros
+            );
+
+            try {
+                $data = $jsi->execute();
+                Log::info('Parâmetros executados: ', $parametros);
+
+                return response($data, 200, [
+                    'Content-Type' => 'application/vnd.ms-excel',
+                    'Content-Disposition' => 'attachment; filename="' . $relatorio . '"',
+                    'Content-Length' => strlen($data),
+                    'Cache-Control' => 'no-cache, no-store, must-revalidate',
+                    'Pragma' => 'no-cache',
+                    'Expires' => '0'
+                ]);
+            } catch (\Exception $e) {
+                Log::error('Erro ao gerar relatório: ' . $e->getMessage());
+                return back()->withNotification([
+                    'title'   => 'Erro!',
+                    'type'    => 'error',
+                    'message' => 'Não foi possível gerar o relatório. ' . $e->getMessage()
+                ]);
+            }
+        } catch (\Exception $e) {
+            Log::error('Erro geral: ' . $e->getMessage());
+            return back()->withNotification([
+                'title'   => 'Erro!',
+                'type'    => 'error',
+                'message' => 'Erro inesperado: ' . $e->getMessage()
+            ]);
+        }
+    }
+
+
+    public function getVeiculos()
+    {
+        return Veiculo::select('id_veiculo as value', 'placa as label')
+            ->orderBy('placa', 'asc')
+            ->limit(30)
+            ->get()
+            ->toArray();
+    }
+
+    public function getFornecedor()
+    {
+        return Fornecedor::select('id_fornecedor as value', 'nome_fornecedor as label')
+            ->orderBy('nome_fornecedor', 'asc')
+            ->limit(30)
+            ->get()
+            ->toArray();
+    }
+}

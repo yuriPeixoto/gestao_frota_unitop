@@ -1,0 +1,48 @@
+/* Tema customizado para tooltips */
+.tippy-box[data-theme~='custom-dark'] {
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tippy-box[data-theme~='custom-dark'][data-placement^='top']>.tippy-arrow::before {
+    border-top-color: #333;
+}
+
+.tippy-box[data-theme~='custom-dark'][data-placement^='bottom']>.tippy-arrow::before {
+    border-bottom-color: #333;
+}
+
+.tippy-box[data-theme~='custom-dark'][data-placement^='left']>.tippy-arrow::before {
+    border-left-color: #333;
+}
+
+.tippy-box[data-theme~='custom-dark'][data-placement^='right']>.tippy-arrow::before {
+    border-right-color: #333;
+}
+
+/* Tema personalizado com borda */
+.tippy-box[data-theme~='bordered'] {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tippy-box[data-theme~='bordered'][data-placement^='top']>.tippy-arrow::before {
+    border-top-color: #ccc;
+}
+
+.tippy-box[data-theme~='bordered'][data-placement^='bottom']>.tippy-arrow::before {
+    border-bottom-color: #ccc;
+}
+
+.tippy-box[data-theme~='bordered'][data-placement^='left']>.tippy-arrow::before {
+    border-left-color: #ccc;
+}
+
+.tippy-box[data-theme~='bordered'][data-placement^='right']>.tippy-arrow::before {
+    border-right-color: #ccc;
+}

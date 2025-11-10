@@ -1,0 +1,1359 @@
+Alterações de Banco:
+--> Tabela modelo veiculo:
+		-> Adicionado:
+			: coluna (marca)
+		-> Alterado:
+			: coluna (multicombustivel)
+		-> Excluido:
+
+		Autor: Marcos Jr 10/12/2024
+
+
+--> Tabela grupo_servico
+	-> Foi necessário modificar o sequencial
+		-> SELECT pg_get_serial_sequence('grupo_servico', 'id_grupo');
+           SELECT setval('public.grupo_servico_id_grupo_seq', (SELECT MAX(id_grupo) FROM grupo_servico));
+
+		Autor: Leonardo Freire 11/12/2024
+
+--> Tabela subgrupo_servico
+    --> Alterado:
+			: coluna fk(ig_grupo) -> virou id_grupo_servico
+
+		Autor: Leonardo Freire 11/12/2024
+
+--> Tabela empresa
+  * Agora teremos o cadastro das empresas mais simplificado.
+	-> Adicionado:
+			: coluna (matriz,status,filial,municipio,logradouro,inscricaomunicipal,sigla, rntrc, situacao_rntrc,municipio_uf_rntrc,data_cadastro_rntrc)
+
+		Autor: Leonardo Freire 12/12/2024
+
+--> Tabela pessoal
+	* Cadastro de pessoas agora possui campo orgao emissor do RG, diminuimos o campo CPF para 14 caracteres e ele será obrigatório
+		ALTER TABLE pessoal ADD COLUMN orgao_emissor varchar(25); --Adicona o campo orgao_emissor
+		ALTER TABLE pessoal ALTER COLUMN cpf TYPE varchar(14); 	  --altera o tamanho do campo para varchar com 14 posições para gravar 000.000.000-00
+		ALTER TABLE pessoal ALTER COLUMN cpf DROP DEFAULT;        --Dropa o valor default do campo que estava configurado para NULL
+		ALTER TABLE pessoal ALTER COLUMN cpf SET NOT NULL;        --Configura o campo para não receber valores nulos.
+		ALTER TABLE pessoal ALTER COLUMN rg TYPE varchar(25);     --Alterado o tamnho do campo RG de 500 para 25
+		ALTER TABLE pessoal ADD COLUMN imagem_pessoal varchar(150); --Adiciona coluna para armazenar foto da pessoa.
+
+		CREATE EXTENSION unaccent; --necessário executar para que a pesquisa por nome de municipio funcione!
+
+		Autor: Leonardo Fregnani 19/12/2024
+
+--> Tabela tipo_veiculo
+	> Adicionado:
+			: coluna (data_alteracao, data_inclusao)
+	Autor: Leonardo Freire 12/12/2024
+
+--> Tabela Fornecedor
+	>Adicionado:
+			: coluna (is_juridico)
+			ALTER TABLE fornecedor ADD COLUMN is_juridico BOOLEAN;
+			ALTER TABLE fornecedor ALTER COLUMN is_ativo SET DEFAULT false;
+			ALTER TABLE fornecedor ALTER COLUMN is_juridico SET DEFAULT false;
+			ALTER TABLE fornecedor ADD COLUMN site text;
+			update fornecedor set is_ativo = false where is_ativo is null;
+			update fornecedor set is_juridico = true where cnpj_fornecedor is not null;
+
+	Autor: Leonardo Fregnani 26/12/2024
+
+--> Tabela veiculo
+	> Adicionado:
+			: coluna (imagem_veiculo)
+	Autor: Leonardo Freire 12/12/2024
+
+--> Postgres
+	CREATE EXTENSION IF NOT EXISTS unaccent;
+		-> O comando CREATE EXTENSION IF NOT EXISTS unaccent; no PostgreSQL habilita a extensão unaccent, que é usada para remover acentos de caracteres em textos. Essa extensão é especialmente útil para comparar strings de forma insensível a acentuação (por exemplo, tratando "São" e "Sao" como equivalentes).
+
+			CREATE EXTENSION: Cria uma extensão no banco de dados.
+			IF NOT EXISTS: Evita erro caso a extensão já esteja habilitada.
+			unaccent: Nome da extensão.
+
+			Como funciona:
+			Após habilitar, você pode usar a função unaccent() para transformar textos:
+			SELECT unaccent('São Paulo');
+			-- Retorna: 'Sao Paulo'
+
+			Essa função é muito útil em buscas normalizadas e manipulação de strings.
+
+	Autor: Leonardo Fregnani 10/01/2025 - Fonte: ChatGPT
+
+--> Tabela: Telefone
+	-> Criação de coluna contato_comercial e telefone_contato
+	alter table TELEFONE add column contato_comercial text;
+	alter table TELEFONE add column telefone_contato text;
+
+	Autor: Leonardo Fregnani 11/01/2025
+
+--> Tabela: motivo_multa
+	-> Alteração nome da coluna id_filial_responsaval para id_filial_responsavel
+	   ALTER TABLE motivo_multa RENAME COLUMN id_filial_responsaval to id_filial_responsavel;
+	   ALTER TABLE motivo_multa RENAME COLUMN id_departamento_responsaval to id_departamento_responsavel;
+	-> Alteração valor padrão dos campos booleanos para false
+	   ALTER TABLE motivo_multa ALTER COLUMN debitar_condutor SET DEFAULT false;
+	   ALTER TABLE motivo_multa ALTER COLUMN is_assinado SET DEFAULT false;
+	-> Adição do campo notificao_detalhe
+		alter table detalhe_multa add column notificacao_detalhe text;
+
+	Autor: Leonardo Fregnani 21/01/2025
+
+--> Tabela: parcelasipva
+	-> Definindo valor padrão para a coluna valor_juros
+	ALTER TABLE parcelasipva ALTER COLUMN valor_juros SET DEFAULT 0;
+
+	Autor: Leonardo Fregnani 31/01/2025
+
+--> Tebela: tipoequipamento
+	-> Criação de colunas quantidade de penus por eixos
+	   ALTER TABLE tipoequipamento
+	   ADD COLUMN numero_pneus_eixo_1 INTEGER,
+	   ADD COLUMN numero_pneus_eixo_2 INTEGER,
+	   ADD COLUMN numero_pneus_eixo_3 INTEGER,
+	   ADD COLUMN numero_pneus_eixo_4 INTEGER;
+
+	   //Update para configurar os campos.
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 59;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 51;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2 WHERE id_tipo_equipamento = 55;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 47;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 44;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2 WHERE id_tipo_equipamento = 72;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 71;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 3;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2 WHERE id_tipo_equipamento = 42;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 54;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 53;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 60;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2 WHERE id_tipo_equipamento = 63;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 56;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2 WHERE id_tipo_equipamento = 9;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4 WHERE id_tipo_equipamento = 1;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2 WHERE id_tipo_equipamento = 49;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2 WHERE id_tipo_equipamento = 10;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 2;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 4;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 52;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2, NUMERO_PNEUS_EIXO_3 = 2 WHERE id_tipo_equipamento = 62;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 57;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 61;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 65;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 64;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 58;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 4, NUMERO_PNEUS_EIXO_2 = 4, NUMERO_PNEUS_EIXO_3 = 4 WHERE id_tipo_equipamento = 50;
+	   UPDATE TIPO EQUIPAMENTO SET NUMERO_PNEU_EIXO_1 = 2, NUMERO_PNEUS_EIXO_2 = 2, NUMERO_PNEUS_EIXO_3 = 4, NUMERO_PNEUS_EIXO_4 = 4 WHERE id_tipo_equipamento = 40;
+
+
+	OBS: para os tipos equipamentos que já existem no sistema eles precisa populado para aparecer os pneus.
+	Autor: Aoliabe AGS. 30/01/2025
+	Autor Update: Leonardo Fregnani 23/04/2025
+
+--> Tabela: ipvaveiculo
+	-> criação da coluna intervalo_parcelas
+	alter table ipvaveiculo add column intervalo_parcelas INTEGER;
+	alter table ipvaveiculo add column data_primeira_parcela date;
+
+	Autor: Leonardo Fregnani 06/02/2025
+
+--> Tabela: Estado
+	-> Atualização dos Registros e inclusão dos estados que estão faltando na tabela atual!
+	Truncate table estado;
+	INSERT INTO estado (id_uf, uf, nome, codigo_ibge) VALUES
+	(1, 'AC', 'Acre', 12),
+	(2, 'AL', 'Alagoas', 27),
+	(3, 'AP', 'Amapá', 16),
+	(4, 'AM', 'Amazonas', 13),
+	(5, 'BA', 'Bahia', 29),
+	(6, 'CE', 'Ceará', 23),
+	(7, 'DF', 'Distrito Federal', 53),
+	(8, 'ES', 'Espírito Santo', 32),
+	(9, 'GO', 'Goiás', 52),
+	(10, 'MA', 'Maranhão', 21),
+	(11, 'MT', 'Mato Grosso', 51),
+	(12, 'MS', 'Mato Grosso do Sul', 50),
+	(13, 'MG', 'Minas Gerais', 31),
+	(14, 'PA', 'Pará', 15),
+	(15, 'PB', 'Paraíba', 25),
+	(16, 'PR', 'Paraná', 41),
+	(17, 'PE', 'Pernambuco', 26),
+	(18, 'PI', 'Piauí', 22),
+	(19, 'RJ', 'Rio de Janeiro', 33),
+	(20, 'RN', 'Rio Grande do Norte', 24),
+	(21, 'RS', 'Rio Grande do Sul', 43),
+	(22, 'RO', 'Rondônia', 11),
+	(23, 'RR', 'Roraima', 14),
+	(24, 'SC', 'Santa Catarina', 42),
+	(25, 'SP', 'São Paulo', 35),
+	(26, 'SE', 'Sergipe', 28),
+	(27, 'TO', 'Tocantins', 17);
+
+	autor: Leonardo Fregnani - 07/02/2025
+
+
+
+--> Tabela: transferencia_pneus
+	-> mundança de tipo da coluna
+	ALTER TABLE transferencia_pneus ALTER COLUMN observacao_baixa TYPE TEXT;
+	ALTER TABLE transferencia_pneus ALTER COLUMN recebido set default false;
+
+	autor: Aoliabe 2AGS - 12/02/2025
+	Autor: Leonardo Fregnani - 12/05/2025
+
+--> Tabela: entrada_afericao_abastecimento
+	-> Alteração dos campos volume_abastecimento e volume_entrada, pois os valores de origem na tabela abastecimento_integracao são double precision
+	alter table entrada_afericao_abastecimento alter column volume_abastecimento type double precision;
+	alter table entrada_afericao_abastecimento alter column volume_entrada type double precision;
+
+	-> Alterado função fc_insere_entrada_afericao() para atualização da tabela estoque_combustivel
+
+		DECLARE
+			qtde_combustivel_atual DOUBLE PRECISION;
+			id_tanque_var INTEGER;
+			diferenca_var DOUBLE PRECISION;
+		BEGIN
+		--JOÃO 17/07/2023
+		-- FUNÇÃO QUE GERA UMA ENTRADA DE COMBUSTÍVEL NO  TANQUE COM BASE NA ENTRADA DA TABELA DE
+		-- ENTRADA POR AFERIÇÃO DE ABASTECIMENTO (entrada_afericao_abastecimento)
+
+		-- Leonardo Fregnani 17/02/2025
+		-- Função estava apresentando problema, pois retornava vários resultados impedindo a função de prosseguir
+		-- adicionado o filtro data_encerramento para trazer somente o tanque ativo.
+
+
+				id_tanque_var := NEW.id_tanque;
+
+
+				qtde_combustivel_atual := (
+					SELECT
+						QUANTIDADE_EM_ESTOQUE
+					FROM
+						ESTOQUE_COMBUSTIVEL AS E
+					WHERE
+						E.ID_TANQUE = 2
+					AND data_encerramento is null
+				);
+
+				diferenca_var 		:= NEW.volume_entrada;
+
+			IF qtde_combustivel_atual IS NOT NULL THEN
+
+
+					qtde_combustivel_atual := qtde_combustivel_atual + diferenca_var;
+				UPDATE estoque_combustivel
+					SET data_alteracao = now(),
+					quantidade_em_estoque = qtde_combustivel_atual
+					WHERE id_tanque = id_tanque_var AND data_encerramento IS NULL;
+
+
+			END IF;
+
+			-- Aqui você pode retornar a trigger para continuar a execução normal do evento
+			RETURN NEW;
+
+		END;
+
+Autor: Leonardo Fregnani - 17/02/2025
+
+--> Tabela: teste_fumaca
+	-->Adicionado as colunas para garantir integridade dos dados.
+	ALTER TABLE teste_fumaca ADD COLUMN data_inclusao TIMESTAMP;
+	update teste_fumaca set data_inclusao = now();
+	ALTER TABLE teste_fumaca alter cOLUMN data_inclusao TIMESTAMP set not null;
+	ALTER TABLE teste_fumaca ADD COLUMN data_alteracao TIMESTAMP;
+
+	Autor: Leonardo Fregnani - 13/02/2025
+
+
+--> Tabela: transferencia_pneus
+	-> mundança de tipo da coluna
+	ALTER TABLE transferencia_pneus ALTER COLUMN observacao_baixa TYPE TEXT;
+
+	autor: Aoliabe 2AGS - 12/02/2025
+--> Tabela: entrada_afericao_abastecimento
+	-> Alteração dos campos volume_abastecimento e volume_entrada, pois os valores de origem na tabela abastecimento_integracao são double precision
+	alter table entrada_afericao_abastecimento alter column volume_abastecimento type double precision;
+	alter table entrada_afericao_abastecimento alter column volume_entrada type double precision;
+
+	-> Alterado função fc_insere_entrada_afericao() para atualização da tabela estoque_combustivel
+
+		DECLARE
+			qtde_combustivel_atual DOUBLE PRECISION;
+			id_tanque_var INTEGER;
+			diferenca_var DOUBLE PRECISION;
+		BEGIN
+		--JOÃO 17/07/2023
+		-- FUNÇÃO QUE GERA UMA ENTRADA DE COMBUSTÍVEL NO  TANQUE COM BASE NA ENTRADA DA TABELA DE
+		-- ENTRADA POR AFERIÇÃO DE ABASTECIMENTO (entrada_afericao_abastecimento)
+
+		-- Leonardo Fregnani 17/02/2025
+		-- Função estava apresentando problema, pois retornava vários resultados impedindo a função de prosseguir
+		-- adicionado o filtro data_encerramento para trazer somente o tanque ativo.
+
+
+				id_tanque_var := NEW.id_tanque;
+
+
+				qtde_combustivel_atual := (
+					SELECT
+						QUANTIDADE_EM_ESTOQUE
+					FROM
+						ESTOQUE_COMBUSTIVEL AS E
+					WHERE
+						E.ID_TANQUE = 2
+					AND data_encerramento is null
+				);
+
+				diferenca_var 		:= NEW.volume_entrada;
+
+			IF qtde_combustivel_atual IS NOT NULL THEN
+
+
+					qtde_combustivel_atual := qtde_combustivel_atual + diferenca_var;
+				UPDATE estoque_combustivel
+					SET data_alteracao = now(),
+					quantidade_em_estoque = qtde_combustivel_atual
+					WHERE id_tanque = id_tanque_var AND data_encerramento IS NULL;
+
+
+			END IF;
+
+			-- Aqui você pode retornar a trigger para continuar a execução normal do evento
+			RETURN NEW;
+
+		END;
+
+Autor: Leonardo Fregnani - 17/02/2025
+
+-> View: v_listar_abastecimentos_para_faturamento
+ -> Alterado a view para formatação do CNPJ
+	DROP VIEW public.v_listar_abastecimentos_para_faturamento;
+
+	CREATE OR REPLACE VIEW public.v_listar_abastecimentos_para_faturamento
+	AS
+	SELECT ft.id_transacao AS cod_transacao,
+		ft.chave_nf::text AS chave_nf,
+		"substring"(ft.chave_nf::text, 26, 9)::integer::text AS numero_nf,
+		ft.data_vencimento AS data_vencimento_nf,
+		ft.valor_nf::text AS valor_nf,
+		ft.posto_abastecimento,
+		concat(SUBSTRING(ft.cnpj FROM 1 FOR 2), '.', SUBSTRING(ft.cnpj FROM 3 FOR 3), '.', SUBSTRING(ft.cnpj FROM 6 FOR 3), '/', SUBSTRING(ft.cnpj FROM 9 FOR 4), '-', SUBSTRING(ft.cnpj FROM 13 FOR 2)) AS cnpj,
+		ft.placa,
+		ft.tipo_combustivel,
+		ft.data_abastecimento,
+		ft.nomefatasiaposto,
+		'truckpag'::text AS tipo
+	FROM faturamento_abastecimento ft
+	WHERE ft.data_fechamento IS NULL
+	UNION
+	SELECT ab.id_abastecimento AS cod_transacao,
+		ab.chave_nf,
+		"substring"(ab.chave_nf, 26, 9) AS numero_nf,
+		it.data_abastecimento::date AS data_vencimento_nf,
+		it.valor_total::text AS valor_nf,
+		fr.nome_fornecedor::text AS posto_abastecimento,
+		fr.cnpj_fornecedor::text AS concat,
+		v.placa::text AS placa,
+		tc.descricao::text AS tipo_combustivel,
+		ab.data_abastecimento,
+		fr.nome_fornecedor::text AS nomefatasiaposto,
+		'unitop'::text AS tipo
+	FROM abastecimento ab
+		JOIN abastecimento_itens it ON it.id_abastecimento = ab.id_abastecimento
+		JOIN tipocombustivel tc ON tc.id_tipo_combustivel = it.id_combustivel
+		JOIN fornecedor fr ON fr.id_fornecedor = ab.id_fornecedor
+		JOIN veiculo v ON v.id_veiculo = ab.id_veiculo
+	WHERE fr.nome_fornecedor::text !~~ '%CARVALIMA%'::text AND ab.data_fechamento IS NULL;
+
+	ALTER TABLE public.v_listar_abastecimentos_para_faturamento
+		OWNER TO postgres;
+
+	Autor: Leonardo Fregnani - 20/02/2025
+
+-> Tabela: ordem_servico
+	-> Definir como valor padrão o campo is_cancelada para false
+
+	ALTER TABLE ordem_servico ALTER COLUMN is_cancelada SET DEFAULT false;
+
+	Autor: Leonardo Fregnani - 03/03/2025
+
+
+-> Tabela: abastecimento_integracao
+	-> Adicionado coluna id_departamento.
+
+	alter table abastecimento_integracao add column id_departamento integer;
+	alter table abastecimento_integracao add column id_filial integer;
+
+	Autor: Leonardo Fregnani - 28/03/2025
+
+-> Tabela: pneu
+	-> Adicionado coluna deleted_at para prevenir que a exclusão do pneu pelo usuário afete a numeração de fogo
+	-> Adicionado coluna id_modelo_pneu para relacionar modelopneu.
+	-> Adicionado update para inserir os modelos dos pneus com base na histórico pneu, mas no futuro o pneu deve ser cadastrado já com modelo.
+
+	ALTER TABLE pneu ADD COLUMN deleted_at TIMESTAMP DEFAULT NULL;
+	alter table pneu add column id_modelo_pneu integer;
+	alter table pneu add column id_controle_vida_pneu integer;
+	ALTER TABLE pneu ADD CONSTRAINT fk_modelo_pneu FOREIGN KEY (id_modelo_pneu) REFERENCES modelopneu(id_modelo_pneu);
+	ALTER TABLE pneu ADD CONSTRAINT fk_controle_vida FOREIGN KEY (id_controle_vida_pneu) REFERENCES controle_vida_pneu(id_controle_vida_pneu);
+
+	update pneu p
+		set id_modelo_pneu = hp.id_modelo
+	from (
+		select distinct on (id_pneu) id_pneu, id_modelo
+		from historicopneu
+		order by id_pneu, data_inclusao desc
+	) hp
+	where p.id_pneu = hp.id_pneu;
+
+	update pneu p
+		set id_controle_vida_pneu = hp.id_vida_pneu
+	from (
+		select distinct on (id_pneu) id_pneu, id_vida_pneu
+		from historicopneu
+		order by id_pneu, data_inclusao desc
+	) hp
+	where p.id_pneu = hp.id_pneu;
+
+
+	Autor: Leonardo Fregnani - 11/04/2025
+							 - 13/05/2025
+							 - 28/05/2025
+
+-> Tabela: roles
+	-> Adicionado coluna is_ativo e usuario.
+	ALTER TABLE roles ADD COLUMN is_ativo BOOLEAN DEFAULT true;
+	ALTER TABLE roles ADD COLUMN id_user integer;
+
+	Autor: Leonardo Fregnani - 05/05/2025
+
+
+-> Tabela: users
+	-> Adicionado coluna is_ativo.
+	ALTER TABLE users ADD COLUMN is_ativo BOOLEAN DEFAULT true;
+
+	Autor: Leonardo Fregnani - 06/05/2025
+
+
+-> Tabela: certificadoveiculo
+	-> Adicionado coluna situacao.
+		ALTER TABLE certificadoveiculo
+		ADD COLUMN situacao VARCHAR(50);
+
+	UPDATE certificadoveiculo
+	SET situacao = 'A Vencer';
+
+	Autor: Vinicius Cesar - 06/05/2025
+
+-> Tabela: aprovadorespedidos
+	-> Ajustado campos tipo_solicitacao_compras, tipo_requisicao_materiais,
+	tipo_gerencial para receber valores iniciais FALSE.
+	alter table aprovadorespedidos alter column tipo_solicitacao_compras set default false;
+	alter table aprovadorespedidos alter column tipo_requisicao_materiais set default false;
+	alter table aprovadorespedidos alter column tipo_gerencial set default false;
+	UPDATE APROVADORESPEDIDOS
+	SET
+		TIPO_REQUISICAO_MATERIAIS = FALSE,
+		TIPO_GERENCIAL = FALSE
+	WHERE
+		id_aprovadores in (19, 88, 86,  84, 82, 78, 80, 90, 3, 87, 83, 81, 70, 79, 85, 89, 1)
+
+	Autor: Leonardo Fregnani - 07/05/2025
+
+-> Tabela: tanque
+	->adicionada coluna is_ativo
+	->setados todos os campos existentes como true
+	alter table tanque add is_ativo BOOLEAN default true;
+	alter table tanque add deleted_at timestamp without time zone;
+	update tanque set is_ativo = true;
+
+	Autor: Yuri Peixoto - 11/05/2025
+
+
+-> Tabela: bombas
+	->adicionada coluna is_ativo
+	->setados todos os campos existentes como true
+	alter table bomba add column deleted_at timestamp without time zone;
+	alter table bomba add column is_ativo BOOLEAN default true;
+	update bomba set is_ativo = true;
+
+	Autor: Yuri Peixoto - 12/05/2025
+
+
+-> Tabela: licenciamentoveiculo
+	-> Após rodar a migrate, executar este update para a replicação do licenciamentoveiculo funcionar
+	UPDATE licenciamentoveiculo
+		SET placa = veiculo.placa
+	FROM veiculo
+	WHERE licenciamentoveiculo.id_veiculo = veiculo.id_veiculo
+	AND licenciamentoveiculo.placa IS NULL;
+
+	Autor: Leonardo Fregnani - 14/05/2025
+
+-> Tabela: requisicao_pneus_itens
+	-> Alterado comportamento de update do status do pneu para ser alterado quando for salvo na requisição
+
+		DROP TRIGGER IF EXISTS desatualizar_status_pneu_apagar ON public.requisicao_pneu_itens;
+		DROP TRIGGER IF EXISTS atualizar_status_pneu_inserir ON public.requisicao_pneu_itens;
+
+	Autor: Leonardo Fregnani - 29/05/2025
+
+-> Tabela manutencao_pneus
+	-> campo is_borracharia recebeu valor padrão para false.
+	update manutencao_pneus set is_borracharia = false where is_borracharia is null
+
+	Autor: Leonardo Fregnani - 09/06/2025
+
+-> Tabela pneus_aplicados
+	-> renomeado o campo para correção de digitação.
+	-> removico trigger para remoção e gravação de historico pneu
+
+	alter table pneus_aplicados rename column km_adcionado to km_adicionado;
+
+	DROP TRIGGER IF EXISTS fs_remover_pneu_aplicado_historico_remover ON public.pneus_aplicados CASCADE;
+	DROP TRIGGER IF EXISTS fs_inseriri_pneu_aplicado_historico_inserir ON public.pneus_aplicados CASCADE;
+
+	Autor: Leonardo Fregnani - 16/06/2025
+
+-> Função: fc_inserir_devolucao_matriz
+	-> Alterado a forma de returnar o curval utilizando o returning
+	CREATE OR REPLACE FUNCTION public.fc_inserir_devolucao_matriz(idpeca integer, id_prod_param numeric[])
+		RETURNS integer
+		LANGUAGE plpgsql
+		AS $function$
+		DECLARE
+			id_transferencia_curval integer;
+		BEGIN
+
+			-- INSERT na tabela transferencia_estoque
+			INSERT INTO transferencia_estoque
+			(
+				data_inclusao,
+				id_filial,
+				id_usuario,
+				id_departamento,
+				aprovado,
+				filial_baixa
+			)
+			SELECT DISTINCT
+				CURRENT_TIMESTAMP,
+				r.id_filial,
+				r.id_user_solicitante,
+				r.id_departamento,
+				r.aprovado,
+				1
+			FROM devolucao_matriz AS r
+			WHERE r.id = idpeca
+			RETURNING id_tranferencia INTO id_transferencia_curval; -- Usar RETURNING em vez de currval
+
+			INSERT INTO transferencia_estoque_itens
+			(
+				data_inclusao,
+				id_produto,
+				quantidade,
+				id_transferencia,
+				quantidade_baixa
+			)
+			SELECT DISTINCT
+				CURRENT_TIMESTAMP,
+				pr.id_produto,
+				pr.qtd_enviada,
+				id_transferencia_curval,
+				0
+			FROM devolucao_matriz_itens AS pr
+			WHERE pr.id_devolucao_matriz = idpeca
+			AND pr.id = ANY (id_prod_param)
+			AND pr.qtd_enviada != 0;
+
+			UPDATE devolucao_matriz
+			SET id_nova_entrada = id_transferencia_curval,
+				transferencia_feita = TRUE
+			WHERE id = idpeca;
+
+			UPDATE produtos_por_filial rr
+			SET quantidade_produto = (ppf.quantidade_produto - pr.qtd_enviada)
+			FROM devolucao_matriz r
+			INNER JOIN devolucao_matriz_itens pr ON pr.id_devolucao_matriz = r.id
+			INNER JOIN produtos_por_filial ppf ON ppf.id_produto_unitop = pr.id_produto AND ppf.id_filial = r.id_filial
+			WHERE pr.id_devolucao_matriz = idpeca
+			AND rr.id_filial = r.id_filial
+			AND rr.id_produto_unitop = pr.id_produto
+			AND pr.id = ANY (id_prod_param)
+			AND pr.qtd_enviada != 0;
+
+			IF FOUND THEN
+				RETURN 1;
+			ELSE
+				RETURN 0;
+			END IF;
+		END;
+		$function$;
+	Autor: Leonardo Fregnani - 21/07/2025
+
+
+
+-> Tabela transferencia_estoque
+
+	nova coluna na tabela transferencia_estoque que recebera o id da transferência_direta_estoque
+
+	a ideia é  vincular o id da transferência_direta_estoque na tabela transferência_estoque
+	para quando confirmar recebimento em transferência_estoque ele atualizar o registro do id transferência direta estoque como finalizada
+
+-> Função fc_verifica_quantidades_pneus
+	-> Identificado erro no select e soma da quantidade de pneus, soma acontecia mesmo que a nota fiscal não possuisse pneus.
+
+	-- DROP FUNCTION public.fc_verifica_quantidades_pneus(int4);
+
+	CREATE OR REPLACE FUNCTION public.fc_verifica_quantidades_pneus(id_nota_fiscal integer)
+	RETURNS TABLE(quantidade_pneus_nota_entrada integer, quantidade_pneus_marcados_e_conferidos integer, is_marcado boolean, is_conferido boolean, comparacao boolean)
+	LANGUAGE plpgsql
+	AS $function$
+	DECLARE
+		quantidade_pneus_nota_entrada INTEGER;
+		quantidade_pneus_marcados_e_conferidos INTEGER;
+		is_marcado BOOLEAN;
+		is_conferido BOOLEAN;
+	BEGIN
+		-- Calcula a quantidade de produtos na nota de entrada
+		SELECT
+			COALESCE(SUM(nfp.quantidade_produtos), 0)
+		INTO
+			quantidade_pneus_nota_entrada
+		FROM
+			nota_fiscal_produtos nfp
+			join produto p on p.id_produto = nfp.cod_produto and p.descricao_produto ilike 'PNEU%'
+		WHERE
+			nfp.id_nota_fiscal_entrada = id_nota_fiscal;
+
+		-- Calcula a quantidade de pneus marcados e conferidos
+		SELECT
+			COUNT(p.id_pneu),
+			bool_or(osm.is_marcado),
+			bool_or(osm.is_conferido)
+		INTO
+			quantidade_pneus_marcados_e_conferidos,
+			is_marcado,
+			is_conferido
+		FROM
+			ordem_servico_marcacao osm
+		INNER JOIN
+			pneu p ON osm.id_pneu = p.id_pneu
+		WHERE
+			p.status_pneu = 'BORRACHARIA'
+		AND
+			p.id_pneu IN (
+				SELECT nfp.id_pneu
+				FROM nota_fiscal_pneu nfp
+				JOIN nota_fiscal_produtos nfprod ON nfprod.id_nota_fiscal_produtos = nfp.id_nota_fiscal_produtos
+				WHERE nfprod.id_nota_fiscal_entrada = id_nota_fiscal
+			)
+		and osm.is_marcado is TRUE;
+
+		-- Compara as duas quantidades e retorna os valores
+		comparacao := (quantidade_pneus_nota_entrada = quantidade_pneus_marcados_e_conferidos);
+
+		-- Retorna os resultados em colunas separadas
+		RETURN QUERY
+		SELECT
+			quantidade_pneus_nota_entrada,
+			quantidade_pneus_marcados_e_conferidos,
+			is_marcado,
+			is_conferido,
+			comparacao;
+	END;
+	$function$
+	;
+
+	data: 31/07/2025
+	Autor: Leonardo Fregnani
+
+->Função: fc_atualiza_status_pneu
+	Motivo: função alterada, data de alteração não estava sendo gravado.
+
+	CREATE OR REPLACE FUNCTION public.fc_atualiza_status_pneu(
+		id_nf_entrada integer)
+		RETURNS void
+		LANGUAGE 'plpgsql'
+		COST 100
+		VOLATILE PARALLEL UNSAFE
+	AS $BODY$
+	BEGIN
+		UPDATE pneu p
+		SET status_pneu = 'ESTOQUE',
+		data_alteracao = now()
+		FROM (
+				SELECT
+					p.id_pneu
+				FROM
+					ordem_servico_marcacao osm
+					INNER JOIN pneu p ON osm.id_pneu = p.id_pneu
+					AND p.status_pneu = 'BORRACHARIA'
+				WHERE
+					p.id_pneu IN (
+						SELECT
+							nfp.id_pneu
+						FROM
+							nota_fiscal_pneu nfp
+							JOIN nota_fiscal_produtos nfprod ON nfprod.id_nota_fiscal_produtos = nfp.id_nota_fiscal_produtos
+						WHERE
+							nfprod.id_nota_fiscal_entrada = id_nf_entrada
+					)
+					AND osm.is_conferido IS TRUE
+					AND osm.is_marcado IS TRUE
+		) AS r
+		WHERE r.id_pneu = p.id_pneu;
+	END;
+	$BODY$;
+
+	Autor: Leonardo Fregnani - 04/08/2025
+
+->Função: fc_gerar_num_fogo
+	Motivo: Função alterada para contemplar novas colunas em pneu e historicopneu
+
+	CREATE OR REPLACE FUNCTION public.fc_gerar_num_fogo(
+		cod_nota_fiscal_produto_param integer,
+		id_modelo_pneu_param integer)
+		RETURNS integer
+		LANGUAGE 'plpgsql'
+		COST 100
+		VOLATILE PARALLEL UNSAFE
+	AS $BODY$
+	DECLARE
+	filial_var 		  INTEGER;
+	id_pneu_var 	  INTEGER;
+	cont 			  INTEGER;
+	contador	 	  INTEGER := 0;
+	id_ordem_servico_ INTEGER;
+	id_nota_fiscal_entrada_ INTEGER;
+	id_controle_vida_pneu_param INTEGER;
+
+	BEGIN
+
+		IF NOT EXISTS
+		(
+			SELECT
+				*
+			FROM nota_fiscal_pneu AS nfp
+			WHERE nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+		) THEN
+
+			contador:= 0;
+			cont:=
+			(
+				SELECT
+					nfp.quantidade_produtos
+				FROM nota_fiscal_produtos AS nfp
+				WHERE nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+			);
+			filial_var:=
+			(
+				SELECT
+					nfe.id_filial
+				FROM nota_fiscal_entrada AS nfe
+				LEFT JOIN nota_fiscal_produtos AS nfp ON nfp.id_nota_fiscal_entrada = nfe.id_nota_fiscal_entrada
+				WHERE nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+			);
+
+			INSERT INTO ordem_servico
+			(
+				data_inclusao,
+				id_tipo_ordem_servico,
+				id_status_ordem_servico,
+				id_veiculo,
+				id_departamento,
+				observacao,
+				data_inicio_ordem,
+				id_filial
+			)
+			VALUES
+			(
+				CURRENT_TIMESTAMP,
+				1,
+				1,
+				11231, --Veiculo BOR0001
+				300,
+				'O.S. GERADA AUTOMATICAMENTE',
+				CURRENT_TIMESTAMP,
+				filial_var
+			);
+
+			id_ordem_servico_ := (SELECT currval(pg_get_serial_sequence('ordem_servico', 'id_ordem_servico')));
+			id_controle_vida_pneu_param := COALESCE((SELECT MIN(cvp.id_controle_vida_pneu) FROM controle_vida_pneu AS cvp where cvp.id_modelo = id_modelo_pneu_param));
+
+			WHILE contador < cont LOOP
+
+				contador:= contador + 1;
+				INSERT INTO pneu
+				(
+					data_inclusao,
+					id_filial,
+					status_pneu,
+					id_modelo_pneu,
+					id_controle_vida_pneu
+				)
+				VALUES
+				(
+					CURRENT_TIMESTAMP,
+					filial_var,
+					'BORRACHARIA',
+					id_modelo_pneu_param,
+					id_controle_vida_pneu_param
+				);
+
+				id_pneu_var := (SELECT currval(pg_get_serial_sequence('pneu', 'id_pneu')));
+
+				INSERT INTO historicopneu
+				(
+					data_inclusao,
+					id_pneu,
+					id_modelo,
+					id_vida_pneu,
+					observacoes_operacao
+				)
+				VALUES
+				(
+					CURRENT_TIMESTAMP,
+					id_pneu_var,
+					id_modelo_pneu_param,
+					id_controle_vida_pneu_param,
+					concat('ENTRADA NF: ', id_nota_fiscal_entrada_)
+				);
+
+				INSERT INTO nota_fiscal_pneu
+				(
+					data_inclusao,
+					numero_nf,
+					data_nf,
+					valor_unitario,
+					valor_total,
+					id_pneu,
+					id_fornecedor,
+					id_nota_fiscal_produtos
+				)
+				SELECT
+					CURRENT_TIMESTAMP,
+					nfe.numero_nota_fiscal,
+					nfe.data_emissao,
+					nfp.valor_unitario::DOUBLE PRECISION,
+					nfp.valor_total::DOUBLE PRECISION,
+					id_pneu_var,
+					nfe.id_fornecedor,
+					cod_nota_fiscal_produto_param
+				FROM nota_fiscal_entrada AS nfe
+				LEFT JOIN nota_fiscal_produtos AS nfp ON nfp.id_nota_fiscal_entrada = nfe.id_nota_fiscal_entrada
+				where nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param;
+
+				id_nota_fiscal_entrada_ := (
+					select
+						distinct nfe.id_nota_fiscal_entrada
+					from
+						nota_fiscal_entrada nfe
+					join nota_fiscal_produtos nfp on nfp.id_nota_fiscal_entrada = nfe.id_nota_fiscal_entrada
+					where nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+				);
+
+				insert into ordem_servico_marcacao
+				(
+					data_inclusao,
+					id_ordem_servico,
+					id_pneu,
+					is_marcado,
+					id_nota_fiscal_entrada
+				)
+				VALUES
+				(
+					CURRENT_TIMESTAMP,
+					id_ordem_servico_,
+					id_pneu_var,
+					false,
+					id_nota_fiscal_entrada_
+				);
+
+				id_pneu_var:=0;
+
+			END LOOP;
+		ELSE RETURN 0;
+	END IF;
+
+		RETURN 1;
+
+	END;
+	$BODY$;
+
+	ALTER FUNCTION public.fc_gerar_num_fogo(integer, integer)
+		OWNER TO postgres;
+
+	Autor: Leonardo Fregnani - 05/08/2025
+
+->Tabela tipo_ordem_servico
+	->motivo: Necessário para contemplar o novo módulo de ordem de serviço borracharia
+
+	insert into tipo_ordem_servico (data_inclusao, descricao_tipo_ordem) values (now(), 'Ordem de Serviço Borracharia');
+
+	autor: Leonardo Fregnani = 03/09/2025
+
+->Tabela pneu
+	-> Renomear o nome da coluna id_controle_vida_pneu para controle_vida_pneu
+	-> dropa a FK da controle_vida_pneu
+
+	alter table pneu rename column id_controle_vida_pneu integer to controle_vida_pneu;
+	ALTER TABLE pneu DROP CONSTRAINT fk_controle_vida;
+
+	Autor: Leonardo Fregnani - 04/09/2025
+
+
+->Tabela Requisição Pneu
+	-> Necessário para referenciar a ordem de servico borracharia que solicitou o pneu;
+		alter table requisicao_pneu add column id_ordem_servico INTEGER;
+		ALTER TABLE requisicao_pneu ADD CONSTRAINT fk_requisicao_pneu_ordem_servico FOREIGN KEY (id_ordem_servico) REFERENCES ordem_servico (id_ordem_servico);
+
+	Autor: Leonardo Fregnani - 09/09/2025
+
+->Tabela Requisição Pneus modelos
+	-> Necessário para referenciar o produto para atualização do estoque em produtos_por_filial
+		alter table requisicao_pneu_modelos add column id_produto integer;
+		ALTER TABLE requisicao_pneu_modelos ADD CONSTRAINT fk_requisicao_pneu_modelos_produto FOREIGN KEY (id_produto) REFERENCES produto (id_produto);
+
+	Autor: Leonardo Fregnani - 09/09/2025
+
+->Tabela historicopneu
+	->adicionado coluna id_usuario
+		alter table historicopneu add column id_usuario integer;
+
+	Autor: Leonardo Fregnani - 09/09/2025
+
+->View v_listar_pedidos_nf
+    -> alterar em produção para a atualizada que está agora no cli_carvalima_old
+
+    Autor: Geovane
+
+--> Tabela: descartepneu
+    -> Implementação do sistema de notificações e controle de fluxo para baixa de pneus
+       Adicionado sistema de status, origem e controle de finalização do processo
+
+    -> Adicionado:
+        : coluna (status_processo) VARCHAR(20) DEFAULT 'aguardando_inicio'
+        : coluna (origem) VARCHAR(20) DEFAULT 'manual'
+        : coluna (id_manutencao_origem) INTEGER
+        : coluna (finalizado_em) TIMESTAMP
+        : coluna (finalizado_por) INTEGER
+
+    -> Foreign Keys criadas:
+        : fk_descartepneu_manutencao_origem - referencia manutencao_pneu_entrada_itens(id_manutencao_pneu_entrada_itens)
+        : fk_descartepneu_finalizado_por - referencia users(id)
+        : fk_descartepneu_pneu - referencia pneu(id_pneu) [se não existia]
+
+    -> Índices criados para performance:
+        : idx_descartepneu_id_pneu - busca por ID do pneu
+        : idx_descartepneu_tipo_descarte - busca por tipo de descarte
+        : idx_descartepneu_data_inclusao - busca por data (DESC)
+        : idx_descartepneu_status_processo - busca por status
+        : idx_descartepneu_origem - busca por origem
+        : idx_descartepneu_status_origem - busca composta (status + origem)
+        : idx_descartepneu_nao_finalizado - processos não finalizados
+        : idx_descartepneu_sem_laudo - registros sem laudo anexado
+
+    -> Constraints de validação:
+        : chk_descartepneu_status_processo - valores: 'aguardando_inicio', 'em_andamento', 'finalizado'
+        : chk_descartepneu_origem - valores: 'manual', 'manutencao'
+        : chk_descartepneu_finalizado - processos finalizados devem ter data e usuário
+
+    -> Atualização de registros existentes:
+        : Registros com laudo anexado foram marcados como 'finalizado'
+        : Data de finalização baseada em data_alteracao ou data_inclusao
+
+    -> Funcionalidades implementadas:
+        : Sistema de anexo múltiplo de laudos
+        : Controle de fluxo por status (aguardando → em andamento → finalizado)
+        : Rastreamento de origem (manual vs manutenção)
+        : Integração com sistema de notificações WhatsApp
+        : Restrições de edição para processos finalizados
+        : Controle de permissão para superusuários
+
+    Autor: Yuri Peixoto - 10/09/2025
+    Finalidade: Issue #439 - Melhorar fluxo de descarte de pneus
+
+    # ===========================================
+    # MILESTONE ATINGIDA! TODOS OS AJUSTES ACIMA EXECUTADOS NO BANCO CLI_CARVALIMA_OLD. 16/09/2025 - YURI PEIXOTO
+    # ===========================================
+
+	-> Tabela eixos
+		Foi alterado as posições 1D e 1E (1D -> 1DI) e (1E -> 1EI) para solucionar problema na Ordem de servico no MadBuilder,
+		ao implementar sistema novo necessário alterar voltando o anterior.
+
+		Autor: Edson Freitas/Leonardo Fregnani - 22/09/2025
+
+	-> Função fc_gerar_num_fogo
+		Alteração na função para criar nova ordem de servico com o id_tipo_ordem_servico = 3 (Borracharia);
+
+		-- DROP FUNCTION IF EXISTS public.fc_gerar_num_fogo(integer, integer);
+
+		CREATE OR REPLACE FUNCTION public.fc_gerar_num_fogo(
+			cod_nota_fiscal_produto_param integer,
+			id_modelo_pneu_param integer)
+			RETURNS integer
+			LANGUAGE 'plpgsql'
+			COST 100
+			VOLATILE PARALLEL UNSAFE
+		AS $BODY$
+
+			DECLARE
+			filial_var 		  INTEGER;
+			id_pneu_var 	  INTEGER;
+			cont 			  INTEGER;
+			contador	 	  INTEGER := 0;
+			id_ordem_servico_ INTEGER;
+			id_nota_fiscal_entrada_ INTEGER;
+			id_controle_vida_pneu_param INTEGER;
+
+			BEGIN
+
+				IF NOT EXISTS
+				(
+					SELECT
+						*
+					FROM nota_fiscal_pneu AS nfp
+					WHERE nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+				) THEN
+
+					contador:= 0;
+					cont:=
+					(
+						SELECT
+							nfp.quantidade_produtos
+						FROM nota_fiscal_produtos AS nfp
+						WHERE nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+					);
+					filial_var:=
+					(
+						SELECT
+							nfe.id_filial
+						FROM nota_fiscal_entrada AS nfe
+						LEFT JOIN nota_fiscal_produtos AS nfp ON nfp.id_nota_fiscal_entrada = nfe.id_nota_fiscal_entrada
+						WHERE nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+					);
+
+					INSERT INTO ordem_servico
+					(
+						data_inclusao,
+						id_tipo_ordem_servico,
+						id_status_ordem_servico,
+						id_veiculo,
+						id_departamento,
+						observacao,
+						data_inicio_ordem,
+						id_filial
+					)
+					VALUES
+					(
+						CURRENT_TIMESTAMP,
+						1,
+						3, --Alterado para contemplar novo OS Borracharia! 23/09/2025 - Leonardo Fregnani
+						11231, --Veiculo BOR0001
+						300,
+						'O.S. GERADA AUTOMATICAMENTE',
+						CURRENT_TIMESTAMP,
+						filial_var
+					);
+
+					id_ordem_servico_ := (SELECT currval(pg_get_serial_sequence('ordem_servico', 'id_ordem_servico')));
+					id_controle_vida_pneu_param := COALESCE((SELECT MIN(cvp.id_controle_vida_pneu) FROM controle_vida_pneu AS cvp where cvp.id_modelo = id_modelo_pneu_param));
+
+					WHILE contador < cont LOOP
+
+						contador:= contador + 1;
+						INSERT INTO pneu
+						(
+							data_inclusao,
+							id_filial,
+							status_pneu,
+							id_modelo_pneu,
+							id_controle_vida_pneu
+						)
+						VALUES
+						(
+							CURRENT_TIMESTAMP,
+							filial_var,
+							'BORRACHARIA',
+							id_modelo_pneu_param,
+							id_controle_vida_pneu_param
+						);
+
+						id_pneu_var := (SELECT currval(pg_get_serial_sequence('pneu', 'id_pneu')));
+
+						INSERT INTO historicopneu
+						(
+							data_inclusao,
+							id_pneu,
+							id_modelo,
+							id_vida_pneu,
+							observacoes_operacao
+						)
+						VALUES
+						(
+							CURRENT_TIMESTAMP,
+							id_pneu_var,
+							id_modelo_pneu_param,
+							id_controle_vida_pneu_param,
+							concat('ENTRADA NF: ', id_nota_fiscal_entrada_)
+						);
+
+						INSERT INTO nota_fiscal_pneu
+						(
+							data_inclusao,
+							numero_nf,
+							data_nf,
+							valor_unitario,
+							valor_total,
+							id_pneu,
+							id_fornecedor,
+							id_nota_fiscal_produtos
+						)
+						SELECT
+							CURRENT_TIMESTAMP,
+							nfe.numero_nota_fiscal,
+							nfe.data_emissao,
+							nfp.valor_unitario::DOUBLE PRECISION,
+							nfp.valor_total::DOUBLE PRECISION,
+							id_pneu_var,
+							nfe.id_fornecedor,
+							cod_nota_fiscal_produto_param
+						FROM nota_fiscal_entrada AS nfe
+						LEFT JOIN nota_fiscal_produtos AS nfp ON nfp.id_nota_fiscal_entrada = nfe.id_nota_fiscal_entrada
+						where nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param;
+
+						id_nota_fiscal_entrada_ := (
+							select
+								distinct nfe.id_nota_fiscal_entrada
+							from
+								nota_fiscal_entrada nfe
+							join nota_fiscal_produtos nfp on nfp.id_nota_fiscal_entrada = nfe.id_nota_fiscal_entrada
+							where nfp.id_nota_fiscal_produtos = cod_nota_fiscal_produto_param
+						);
+
+						insert into ordem_servico_marcacao
+						(
+							data_inclusao,
+							id_ordem_servico,
+							id_pneu,
+							is_marcado,
+							id_nota_fiscal_entrada
+						)
+						VALUES
+						(
+							CURRENT_TIMESTAMP,
+							id_ordem_servico_,
+							id_pneu_var,
+							false,
+							id_nota_fiscal_entrada_
+						);
+
+						id_pneu_var:=0;
+
+					END LOOP;
+				ELSE RETURN 0;
+			END IF;
+
+				RETURN 1;
+
+			END;
+
+		$BODY$;
+
+		Autor: Leonardo Fregnani - 23/09/2025
+
+	->Tabela: ordem_servico_marcacao
+		Adicionado campo de usuário
+
+		alter table ORDEM_SERVICO_MARCACAO add column marcado_por integer;
+		alter table ORDEM_SERVICO_MARCACAO add column conferido_por integer;
+
+	Autor: Leonardo Fregnani - 23/09/2025
+
+	->Tabela: ordem_servico_pecas
+	Adicionado campo para receber ids dos pneus pneus_aplicados
+		alter table ordem_servico_pecas add column pneus_aplicados JSONB
+
+	Autor: Leonardo Fregnani - 23/09/2025
+
+	->Tabela requisicao_pneu
+		Adicionado campo para referenciar relacaosolicitacoespecas
+
+		ALTER TABLE requisicao_pneu
+		ADD COLUMN id_solicitacao_pecas INTEGER;
+
+		ALTER TABLE requisicao_pneu
+		ADD CONSTRAINT fk_requisicao_pneu_solicitacao_pecas
+		FOREIGN KEY (id_solicitacao_pecas)
+		REFERENCES relacaosolicitacoespecas(id_solicitacao_pecas);
+
+	Autor: Leonardo Fregnani - 29/09/2025
+
+	->fc_gerar_requisicao_pneu
+
+	Adicionado id_produto a função.
+		-- FUNCTION: public.fc_gerar_requisicao_pneu()
+
+		-- DROP FUNCTION IF EXISTS public.fc_gerar_requisicao_pneu();
+
+			CREATE OR REPLACE FUNCTION public.fc_gerar_requisicao_pneu()
+				RETURNS trigger
+				LANGUAGE 'plpgsql'
+				COST 100
+				VOLATILE NOT LEAKPROOF
+			AS $BODY$
+			DECLARE
+			-- Declarar Varíaveis
+			id_requisicao_pneu_var INTEGER := 0;
+			venda_var BOOLEAN;
+			BEGIN
+			-- Lógica da Função Trigger:
+
+				venda_var:=(SELECT
+								CASE WHEN OLD.id_terceiro IS NOT NULL THEN TRUE
+								ELSE FALSE
+							END AS check_venda);
+
+				IF OLD.requisicao_pneu IS TRUE AND NEW.aprovacao_gestor <> OLD.aprovacao_gestor AND NEW.aprovacao_gestor IS TRUE THEN
+
+					INSERT INTO requisicao_pneu(data_inclusao, id_filial, situacao, transferencia_entre_filiais, id_terceiro, id_usuario_solicitante, observacao_solicitante,venda, is_aprovado, id_solicitacao_pecas)
+					VALUES (OLD.data_inclusao, OLD.id_filial, 'APROVADO', OLD.transferencia_entre_filiais, OLD.id_terceiro, OLD.id_usuario_abertura::INTEGER, OLD.observacao, venda_var, true, OLD.id_solicitacao_pecas);
+
+					id_requisicao_pneu_var:= (SELECT currval(pg_get_serial_sequence('requisicao_pneu','id_requisicao_pneu')));
+
+					INSERT INTO requisicao_pneu_modelos (data_inclusao, id_requisicao_pneu, id_modelo_pneu, quantidade, id_filial, id_produto)
+					SELECT
+					pts.data_inclusao,
+					id_requisicao_pneu_var,
+					mdp.id_modelo_pneu,
+					pts.quantidade,
+					pts.id_filial,
+					p.id_produto
+					FROM produtossolicitacoes AS pts
+					JOIN produto AS p ON p.id_produto = pts.id_protudos
+					JOIN modelopneu AS mdp ON mdp.id_modelo_pneu = p.id_modelo_pneu
+					WHERE pts.id_relacao_solicitacoes = OLD.id_solicitacao_pecas;
+
+				END IF;
+
+
+				RETURN NEW;
+
+			END;
+			$BODY$;
+
+		Autor: Leonardo Fregnani -> 30/09/2025
+
+	->Tabela: requisicao_pneu
+		Adicionado campo para receber filial
+		alter table requisicao_pneu add column id_filial_destino integer;
+
+		Autor: Leonardo Fregnani - 30/09/2025
+
+	->Tabela: Requisicao_pneu
+		Desativado trigger para gerar transferencia de pneu
+		ALTER TABLE requisicao_pneu DISABLE TRIGGER gerar_transferencia_pneu;
+
+		Autor: Leonardo Fregnani - 30/09/2025
+
+	->Tabela: pneudeposito
+		Tabela agora é uma tabela de transição, ou seja, pneus enviados para esta tabela só poderão permanecer por 24h
+		e deverá ser tratado pelo usuário responsável (borracheiro) destinando o pneu conforme a solicitação.
+		Dados historicos da tabela serão backupeados no dia da implementação e serão deletados.
+
+		CREATE TABLE pneudeposito_hist AS SELECT * FROM pneudeposito;
+		delete from pneudeposito;
+		ALTER TABLE pneudeposito ADD CONSTRAINT unique_id_pneu UNIQUE (id_pneu);
+		SELECT setval('public.pneudeposito_id_deposito_pneu_seq', 1);
+
+		Autor: Leonardo Fregnani - 02/10/2025
+
+	->Tabela: certificadoveiculo
+		adicionando campo deleted_at
+		alter table certificadoveiculo add column deleted_at timestamp
+
+		Autor: Leonardo Fregnani - 22/10/2025 - Já rodei em produção!****
+
+	->Tabela : estoque_movimentos
+
+        'id_estoque_item', => id
+        'tipo_movimento', => string
+        'quantidade', => float
+        'origem', => string
+        'destino', => string
+        'id_referencia', => id
+        'id_usuario', => id
+        'observacao', => string
+        'data_movimento' => date
+
+		Tabel: notas_fiscais
+
+        'id_pedido', => integer
+        'id_fornecedor', => integer
+        'numero_nota',  =>text
+        'serie', =>text
+        'chave_nfe', =: =>text
+        'data_emissao', => date
+        'data_recebimento', => date
+        'valor_total', => numeric
+        'valor_produtos', => numeric
+        'valor_frete', => numeric
+        'valor_seguro', => numeric
+        'valor_desconto', => numeric
+        'valor_outras_despesas', => numeric
+        'valor_icms', => numeric
+        'valor_ipi', => numeric
+        'valor_pis', => numeric
+        'valor_cofins', => numeric
+        'anexo', => arquivo
+        'observacao', =>text
+        'status', => boolean
+        'data_inclusao', date
+        'data_alteracao', date
+
+
+		Tabela = model_has_permissions
+
+		insert
+		'permission_id' => 838,
+		'model_type' => 'App\\Models\\TipoPessoal',
+		'model_id' => 30
+
+		insert
+		'permission_id' => 838,
+		'model_type' => 'App\\Models\\TipoPessoal',
+		'model_id' => 32
+
+	Autor: Marcelo Augusto - 05/11/2025 - Não esta em produção
+		Eu precisava do id_cotacoes na view e em produção não
+		tem esse campo, rodei do no homologação
+
+		DROP VIEW IF EXISTS public.v_cotacoes_menor_valor;
+
+		-- public.v_cotacoes_menor_valor fonte
+
+		CREATE OR REPLACE VIEW public.v_cotacoes_menor_valor
+		AS WITH dados AS (
+					SELECT ss_1_1.id_solicitacoes_compras,
+						ss_1_1.nome_fornecedor,
+						ss_1_1.id_cotacoes,
+						ss_1_1.valor_total,
+						ss_1_1.valor_total_desconto
+					FROM cotacoes ss_1_1
+					WHERE ss_1_1.valor_total_desconto = (( SELECT min(ct.valor_total_desconto) AS min
+								FROM cotacoes ct
+								WHERE ct.id_solicitacoes_compras = ss_1_1.id_solicitacoes_compras))
+				)
+		SELECT id_solicitacoes_compras,
+			nome_fornecedor,
+			id_cotacoes,
+			valor_total,
+			valor_total_desconto
+			FROM dados ss_1;
+
+		-- Permissions
+
+		ALTER TABLE public.v_cotacoes_menor_valor OWNER TO postgres;
+		GRANT ALL ON TABLE public.v_cotacoes_menor_valor TO postgres;
+		GRANT SELECT ON TABLE public.v_cotacoes_menor_valor TO laravel_staging_user;

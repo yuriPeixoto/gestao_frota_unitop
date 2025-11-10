@@ -1,0 +1,86 @@
+# ===================================
+# AMBIENTE E CONFIGURAÇÕES SENSÍVEIS
+# ===================================
+.env*
+!.env.example
+
+# Configuração de banco (bloquear alterações de devs)
+/config/database.php
+/public/hot
+
+# ===================================
+# DEPENDÊNCIAS E BUILD
+# ===================================
+/vendor/
+/node_modules/
+/public/build/
+/public/hot/
+/public/storage/
+package-lock.json
+composer.lock
+
+# ===================================
+# STORAGE E CACHES LARAVEL
+# ===================================
+/storage/logs/*
+!/storage/logs/.gitkeep
+/storage/framework/cache/data/*
+!/storage/framework/cache/data/.gitkeep
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
+/storage/framework/views/*
+!/storage/framework/views/.gitkeep
+/storage/app/public/*
+!/storage/app/public/.gitkeep
+/bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
+
+# ===================================
+# TESTING E PHPUNIT
+# ===================================
+/.phpunit.cache
+/coverage/
+phpunit.xml
+.phpunit.result.cache
+
+# ===================================
+# IDEs E EDITORES
+# ===================================
+/.idea/
+/.vscode/
+/.zed/
+.sublime-
+*.swp
+*.swo
+
+# ===================================
+# SISTEMA OPERACIONAL
+# ===================================
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===================================
+# ARQUIVOS ESPECÍFICOS DO PROJETO
+# ===================================
+# Migrations locais de desenvolvimento
+/database/migrations/local_*
+
+# Views de menus específicas (conforme seu projeto)
+/resources/views/components/menus/configuracoes.blade.php
+
+# Logs personalizados
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# adicionado para utilização do bd local em dev
+/config/database.php
+
+/public/hot/
+node_modules

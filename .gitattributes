@@ -1,0 +1,59 @@
+# ===================================
+# CONFIGURAÇÕES GLOBAIS
+# ===================================
+# Normalizar quebras de linha para LF (Unix)
+* text=auto eol=lf
+
+# ===================================
+# SYNTAX HIGHLIGHTING PARA DIFFS
+# ===================================
+*.blade.php diff=html linguist-language=PHP
+*.css diff=css
+*.html diff=html
+*.js diff=javascript
+*.json diff=json
+*.md diff=markdown
+*.php diff=php
+*.scss diff=css
+*.sql diff=sql
+*.vue diff=html
+
+# ===================================
+# ARQUIVOS BINÁRIOS
+# ===================================
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary
+*.mp4 binary
+*.mp3 binary
+
+# ===================================
+# EXPORT-IGNORE (git archive)
+# ===================================
+/.github/ export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore
+/tests/ export-ignore
+/phpunit.xml export-ignore
+/.env.example export-ignore
+/README.md export-ignore
+/CHANGELOG.md export-ignore
+/.styleci.yml export-ignore
+/docs/ export-ignore
+
+# ===================================
+# TRATAMENTO ESPECIAL
+# ===================================
+# Forçar como texto (evitar detecção binária incorreta)
+*.sql text
+*.md text
+*.txt text
+*.json text
+*.yml text
+*.yaml text
