@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\SinistroController;
-use App\Http\Controllers\Admin\UploadController;
+use App\Modules\Sinistros\Controllers\SinistroController;
+use App\Modules\Sinistros\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 // Rotas de Sinistros

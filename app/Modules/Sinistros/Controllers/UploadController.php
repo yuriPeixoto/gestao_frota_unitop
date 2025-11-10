@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Sinistros\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\SinistroDocumentService;

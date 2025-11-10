@@ -364,7 +364,8 @@ Route::group([
     require __DIR__ . '/statusordemservico.php';
     require __DIR__ . '/seguroobrigatorio.php';
     require __DIR__ . '/servicofornecedor.php';
-    require __DIR__ . '/sinistros.php';
+    // Módulo de Sinistros (estrutura modular)
+    require __DIR__ . '/modules/sinistros.php';
     require __DIR__ . '/veiculos.php';
     require __DIR__ . '/vencimentario.php';
     require __DIR__ . '/anexos.php';
@@ -377,7 +378,7 @@ Route::group([
     require __DIR__ . '/relatorioveiculo.php';
     require __DIR__ . '/relatoriosestoque.php';
     require __DIR__ . '/relatoriocompras.php';
-    require __DIR__ . '/relatoriosinistro.php';
+    // Relatórios de Sinistros movidos para o módulo modular
     require __DIR__ . '/relatoriogerenciais.php';
     require __DIR__ . '/trocafiliais.php';
     require __DIR__ . '/relatorio_premiacao.php';

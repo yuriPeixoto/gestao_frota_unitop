@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Sinistros\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\DadosPessoalSinistro;
+use App\Modules\Sinistros\Models\DadosPessoalSinistro;
 use App\Models\Filial;
-use App\Models\FotosDocumentosSinistros;
-use App\Models\HistoricoEventosSinistro;
+use App\Modules\Sinistros\Models\FotosDocumentosSinistros;
+use App\Modules\Sinistros\Models\HistoricoEventosSinistro;
 use App\Models\Pessoal;
-use App\Models\Sinistro;
+use App\Modules\Sinistros\Models\Sinistro;
 use App\Models\TipoCategoria;
 use App\Models\TipoMotivoSinistro;
 use App\Models\TipoOcorrencia;

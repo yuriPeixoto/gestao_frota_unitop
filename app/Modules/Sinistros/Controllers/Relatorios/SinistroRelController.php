@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Sinistros\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\VFilial;
 use App\Models\Veiculo;
 use App\Models\Pessoal;
-use App\Models\Sinistro;
+use App\Modules\Sinistros\Models\Sinistro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration;
