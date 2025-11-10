@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Checklist\Controllers\Relatorios;
 
 use Illuminate\Http\Request;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
 use Illuminate\Support\Facades\Log; // Se quiser logar exceções
 use App\Helpers\TDate;
 use App\Http\Controllers\Controller;
-use App\Models\CheckList;
+use App\Modules\Checklist\Models\CheckList;
 use App\Models\Filial;
 use App\Models\Veiculo;
 

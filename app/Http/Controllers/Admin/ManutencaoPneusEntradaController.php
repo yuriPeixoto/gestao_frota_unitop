@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CheckListRecebimentoFornecedor;
+use App\Modules\Checklist\Models\CheckListRecebimentoFornecedor;
 use App\Models\DescartePneu;
 use App\Models\DesenhoPneu;
 use App\Models\Filial;

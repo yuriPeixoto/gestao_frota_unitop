@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Checklist\Controllers\Admin;
 ini_set('memory_limit', '512M');
 
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TipoChecklist;
-use App\Models\CheckList;
-use App\Models\ColunaCheckList;
+use App\Modules\Checklist\Models\TipoChecklist;
+use App\Modules\Checklist\Models\CheckList;
+use App\Modules\Checklist\Models\ColunaCheckList;
 use App\Charts\ChecklistChart;
 use Carbon\Carbon;
 

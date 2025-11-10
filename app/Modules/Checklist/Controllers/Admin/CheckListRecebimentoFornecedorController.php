@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Checklist\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CheckListRecebimentoFornecedor;
+use App\Modules\Checklist\Models\CheckListRecebimentoFornecedor;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;

@@ -1,109 +1,74 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Checklist\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\CheckList;
-use App\Models\Motorista;
-use App\Models\Veiculo;
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
+use Illuminate\Support\Facades\Log; // Se quiser logar exceções
 
-class RelatorioGeralChecklistController extends Controller
+class RelatorioCheckListFornecedor extends Controller
 {
     public function index(Request $request)
     {
-        $this->normalizeSmartSelectParams($request);
+        $query = Fornecedor::query();
 
-        // Filtros
-        $dataInicial     = $request->input('data_realizacao');
-        $dataFinal       = $request->input('data_final');
-
-        // Filtros do formulário
-        $query = CheckList::query();
-
-        if ($request->filled('data_realizacao') && $request->filled('data_final')) {
-            $query->whereBetween('data_realizacao', [
-                $request->input('data_realizacao'),
+        if ($request->filled('data_inclusao') && $request->filled('data_final')) {
+            $query->whereBetween('data_inclusao', [
+                $request->input('data_inclusao'),
                 $request->input('data_final')
             ]);
         }
 
-        if ($request->filled('id_veiculo')) {
-            $query->where('id_veiculo', $request->input('id_veiculo'));
+        if ($request->filled('id_fornecedor')) {
+            $query->where('id_fornecedor', $request->input('id_fornecedor'));
         }
 
-        // Filtro por data de inclusão
-        if ($dataInicial && $dataFinal) {
-            $query->whereBetween('data_realizacao', [$dataInicial, $dataFinal]);
-        }
 
-        $veiculos = Veiculo::select('id_veiculo as value', 'placa as label')
-            ->orderBy('placa')
+        $fornecedor = Fornecedor::select('id_fornecedor as value', 'nome_fornecedor as label')
+            ->orderBy('nome_fornecedor')
             ->limit(30)
             ->get();
-
-        $motorista = Motorista::select('idobtermotorista as value', 'nome as label')
-            ->orderBy('nome')
-            ->limit(30)
-            ->get();
-
-        return view('admin.relatoriogeralchecklist.index', [
-            'veiculos' => $veiculos,
-            'motorista' => $motorista,
-        ]);
+        return view('admin.relatoriochecklistfornecedor.index', compact('fornecedor'));
     }
 
     public function gerarPdf(Request $request)
     {
+        // Permite até 5 minutos de execução para o Jasper gerar o PDF
+        //set_time_limit(300);
         Log::info('Dados brutos recebidos:', $request->all());
 
-        if ($request->filled(['data_realizacao', 'data_final'])) {
-            $dados = [
-                'data_realizacao' => $request->data_realizacao,
-                'data_final' => $request->data_final,
-                'id_veiculo' => $request->id_veiculo,
-                'idobtermotorista' => $request->idobtermotorista,
-                'tipo' => $request->tipo,
-            ];
+        if ($request->filled(['data_inclusao', 'data_final'])) {
 
-            $tipoEntrada = ($dados['tipo'] === 'Ambos') ? "'Recebimento','Entrega'" : "'{$dados['tipo']}'";
-
-            if (empty($dados['id_veiculo'])) {
-                $in_placa = '!=';
-                $id_placa = '0';
+            if (empty($request['id_fornecedor'])) {
+                $in_fornecedor = '!=';
+                $id_fornecedor = '0';
             } else {
-                $in_placa = 'IN';
-                $id_placa = $dados['id_veiculo'];
+                $in_fornecedor = 'IN';
+                $id_fornecedor = $request['id_fornecedor'];
             }
 
-            if (empty($dados['idobtermotorista'])) {
-                $in_nome = '!=';
-                $id_nome = '0';
-            } else {
-                $in_nome = 'IN';
-                $id_nome = $dados['idobtermotorista'];
-            }
 
-            $datainicial = \Carbon\Carbon::parse($dados['data_realizacao'])->format('Y-m-d');
-            $datafinal   = \Carbon\Carbon::parse($dados['data_final'])->format('Y-m-d');
+            // Formata datas corretamente — de dd/mm/yyyy para yyyy-mm-dd
+            $datainicial = \Carbon\Carbon::parse($request->input('data_inclusao'))->format('Y-m-d');
+            $datafinal = \Carbon\Carbon::parse($request->input('data_final'))->format('Y-m-d');
 
+
+            // Log para verificação
+            Log::info("Datas convertidas: $datainicial até $datafinal");
 
             $parametros = array(
                 'P_data_inicial' => $datainicial,
                 'P_data_final' => $datafinal,
-                'P_in_veiculo' => $in_placa,
-                'P_id_veiculo' => $id_placa,
-                'P_in_motorista' => $in_nome,
-                'P_id_motorista' => $id_nome,
-                'P_entrada' => $tipoEntrada,
+                'P_in_fornecedor' => $in_fornecedor,
+                'P_id_fornecedor' => $id_fornecedor
             );
 
-            $name = 'checklist_geral';
-            $agora      = date('d-m-YH:i');
-            $tipo       = '.pdf';
-            $relatorio = "{$name}_{$agora}.{$tipo}";
+
+            $name = 'checklist_forncedor';
+            $agora = now()->format('d-m-Y_H-i');
+            $relatorio = "{$name}_{$agora}.pdf";
 
             $host = $request->getHost();
             $pathrel = explode('.', $host);
@@ -186,51 +151,44 @@ class RelatorioGeralChecklistController extends Controller
                 return response()->json(['message' => 'Erro ao gerar o relatório PDF.'], 500);
             }
         }
-    }
 
+        return response()->json(['message' => 'Informe a data inicial e final para emissão do relatório.'], 400);
+    }
 
     public function gerarExcel(Request $request)
     {
-        $param = [
-            'data_realizacao' => $request->data_realizacao,
-            'data_final' => $request->data_final,
-            'id_veiculo' => $request->id_veiculo,
-            'idobtermotorista' => $request->idobtermotorista,
-            'tipo' => $request->tipo,
-        ];
+        // Permite até 5 minutos de execução para o Jasper gerar o PDF
+        //set_time_limit(300);
+        Log::info('Dados brutos recebidos:', $request->all());
 
-        // Corrigir valor do tipo
-        $tipoEntrada = ($param['tipo'] === 'Ambos') ? "'Recebimento','Entrega'" : "'{$param['tipo']}'";
+        if ($request->filled(['data_inclusao', 'data_final'])) {
 
-        if (!empty($request['data_realizacao']) && !empty($request['data_final'])) {
-            if (empty($request['id_veiculo'])) {
-                $in_placa  = '!=';
-                $id_placa  = '0';
+            if (empty($request['id_fornecedor'])) {
+                $in_fornecedor = '!=';
+                $id_fornecedor = '0';
             } else {
-                $in_placa  = 'IN';
-                $id_placa  = $param('id_veiculo');
-            }
-            if (empty($request['idobtermotorista'])) {
-                $in_nome  = '!=';
-                $id_nome  = '0';
-            } else {
-                $in_nome  = 'IN';
-                $id_nome  = $param('idobtermotorista');
+                $in_fornecedor = 'IN';
+                $id_fornecedor = $request['id_fornecedor'];
             }
 
-            $datainicial = \Carbon\Carbon::parse($request->input('data_realizacao'))->format('Y-m-d');
+
+            // Formata datas corretamente — de dd/mm/yyyy para yyyy-mm-dd
+            $datainicial = \Carbon\Carbon::parse($request->input('data_inclusao'))->format('Y-m-d');
             $datafinal = \Carbon\Carbon::parse($request->input('data_final'))->format('Y-m-d');
+
+
+            // Log para verificação
+            Log::info("Datas convertidas: $datainicial até $datafinal");
 
             $parametros = array(
                 'P_data_inicial' => $datainicial,
                 'P_data_final' => $datafinal,
-                'P_in_veiculo' => $in_placa,
-                'P_id_veiculo' => $id_placa,
-                'P_in_motorista' => $in_nome,
-                'P_id_motorista' => $id_nome,
-                'P_entrada' => $tipoEntrada,
+                'P_in_fornecedor' => $in_fornecedor,
+                'P_id_fornecedor' => $id_fornecedor
             );
-            $name = 'checklist_geral_v2';
+
+
+            $name = 'checklist_forncedor';
             $agora = now()->format('d-m-Y_H-i');
             $relatorio = "{$name}_{$agora}.xls";
 
@@ -281,24 +239,41 @@ class RelatorioGeralChecklistController extends Controller
                 Log::info('Usando servidor de produção');
             }
 
-            $jsi = new TraitsJasperServerIntegration(
-                $jasperserver,
-                $pastarelatorio,
-                'xls',
-                'jasperadmin',
-                'unitop2022',
-                $parametros
-            );
+            Log::info("Gerando xls: {$relatorio}");
+            Log::info("Servidor: {$jasperserver}, Caminho: {$pastarelatorio}");
+            Log::info("Parâmetros:", $parametros);
 
             try {
+                $jsi = new TraitsJasperServerIntegration(
+                    $jasperserver,
+                    $pastarelatorio,
+                    'xls',
+                    'unitop',
+                    'unitop2022',
+                    $parametros
+                );
+
                 $data = $jsi->execute();
 
-                return response($data)
-                    ->header('Content-Type', 'application/vnd.ms-excel')
-                    ->header('Content-Disposition', "attachment; filename={$relatorio}");
+                // Verifica se retorno está vazio ou muito pequeno
+                if (empty($data) || strlen($data) < 100) {
+                    Log::error("Relatório xls gerado vazio ou muito pequeno: tamanho " . strlen($data));
+                    return response()->json(['message' => 'O relatório retornou vazio ou inválido.'], 500);
+                }
+
+                // Salva local para debug (opcional)
+                file_put_contents(storage_path("app/public/{$relatorio}"), $data);
+
+                return response($data, 200, [
+                    'Content-Type' => 'application/xls',
+                    'Content-Disposition' => "attachment; filename=\"{$relatorio}\"",
+                ]);
             } catch (\Exception $e) {
-                return response()->json(['message' => 'Erro ao gerar relatório: ' . $e->getMessage()], 500);
+                Log::error("Erro ao gerar xls: " . $e->getMessage());
+                return response()->json(['message' => 'Erro ao gerar o relatório xls.'], 500);
             }
         }
+
+        return response()->json(['message' => 'Informe a data inicial e final para emissão do relatório.'], 400);
     }
 }
