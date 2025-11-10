@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Models\AbastecimentoManual;
-use App\Models\Bomba;
+use App\Modules\Abastecimentos\Models\AbastecimentoManual;
+use App\Modules\Abastecimentos\Models\Bomba;
 use App\Models\Departamento;
 use App\Models\Fornecedor;
 use App\Models\Motorista;
-use App\Models\TipoCombustivel;
+use App\Modules\Abastecimentos\Models\TipoCombustivel;
 use App\Models\Veiculo;
 use App\Models\VFilial;
 use Illuminate\Support\Facades\Cache;
