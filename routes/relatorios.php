@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\SinistroRelatorioController;
-use App\Http\Controllers\Admin\SinistroGeralRelatorioController;
-use App\Http\Controllers\Admin\SinistroRelController;
+use App\Modules\Sinistros\Controllers\Relatorios\SinistroRelatorioController;
+use App\Modules\Sinistros\Controllers\Relatorios\SinistroGeralRelatorioController;
+use App\Modules\Sinistros\Controllers\Relatorios\SinistroRelController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'relatorios'], function () {

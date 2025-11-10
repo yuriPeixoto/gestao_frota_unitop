@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Sinistros\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\Filial;
 use App\Models\Motorista;
-use App\Models\Sinistro;
+use App\Modules\Sinistros\Models\Sinistro;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log; // Se quiser logar exceções

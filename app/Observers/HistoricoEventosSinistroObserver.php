@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Models\HistoricoEventosSinistro;
-use App\Models\Sinistro;
+use App\Modules\Sinistros\Models\HistoricoEventosSinistro;
+use App\Modules\Sinistros\Models\Sinistro;
 
 class HistoricoEventosSinistroObserver
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Sinistros\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pessoal;
-use App\Models\Sinistro;
+use App\Modules\Sinistros\Models\Sinistro;
 use App\Models\Veiculo;
 use App\Models\VFilial;
 use Illuminate\Http\Request;

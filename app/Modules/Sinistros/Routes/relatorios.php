@@ -5,10 +5,10 @@ use App\Http\Controllers\Admin\FornecedorController;
 use App\Http\Controllers\Admin\MotoristaController;
 use App\Http\Controllers\Admin\PessoalController;
 use App\Http\Controllers\Admin\ProdutosImobilizadosController;
-use App\Http\Controllers\Admin\RelatorioSinistro;
-use App\Http\Controllers\Admin\RelatorioSinistroGeral;
-use App\Http\Controllers\Admin\RelatorioSinistroll;
-use App\Http\Controllers\Admin\SinistroController;
+use App\Modules\Sinistros\Controllers\Relatorios\RelatorioSinistro;
+use App\Modules\Sinistros\Controllers\Relatorios\RelatorioSinistroGeral;
+use App\Modules\Sinistros\Controllers\Relatorios\RelatorioSinistroll;
+use App\Modules\Sinistros\Controllers\SinistroController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 

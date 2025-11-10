@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Helpers\PermissionHelper;
 use App\Models\CertificadoVeiculos;
-use App\Models\HistoricoEventosSinistro;
+use App\Modules\Sinistros\Models\HistoricoEventosSinistro;
 use App\Models\User;
 use App\Observers\ExpirationDateObserver;
 use App\Observers\HistoricoEventosSinistroObserver;
