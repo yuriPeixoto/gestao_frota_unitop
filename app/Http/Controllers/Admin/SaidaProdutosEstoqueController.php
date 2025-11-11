@@ -8,7 +8,7 @@ use App\Models\HistoricoMovimentacaoEstoque;
 use App\Models\ItemCompra;
 use App\Models\OrdemServico;
 use App\Models\OrdemServicoPecas;
-use App\Models\OrdemServicoPecasImobilizados;
+use App\Modules\Imobilizados\Models\OrdemServicoPecasImobilizados;
 use App\Models\Produto;
 use App\Models\ProdutosPorFilial;
 use App\Models\ProdutosSolicitacoes;
