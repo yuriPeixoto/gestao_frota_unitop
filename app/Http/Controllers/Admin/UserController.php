@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Departamento;
 use App\Models\Role;
-use App\Models\TipoPessoal;
+use App\Modules\Pessoal\Models\TipoPessoal;
 use App\Models\User;
 use App\Models\VFilial;
 use App\Models\Telefone;

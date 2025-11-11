@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Pessoal\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TipoPessoal;
+use App\Modules\Pessoal\Models\TipoPessoal;
 use Illuminate\Support\Facades\Log;
 
 class TipoPessoalController extends Controller

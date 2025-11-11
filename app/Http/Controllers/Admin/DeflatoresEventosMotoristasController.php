@@ -7,7 +7,7 @@ use App\Models\Deflatores;
 use App\Models\DeflatoresEventosMotoristas;
 use App\Models\Filial;
 use App\Models\Motorista;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\Veiculo;
 use Exception;
 use Illuminate\Http\Request;

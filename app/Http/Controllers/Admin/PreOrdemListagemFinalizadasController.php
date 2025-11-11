@@ -8,7 +8,7 @@ use App\Models\Filial;
 use App\Models\GrupoResolvedor;
 use App\Models\Motorista;
 use App\Models\PreOrdemServico;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\PreOrdemServicoServicos;
 use App\Models\TipoStatusPreOs;
 use App\Models\User;

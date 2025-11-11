@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;

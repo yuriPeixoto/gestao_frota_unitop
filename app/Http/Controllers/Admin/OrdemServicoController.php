@@ -19,7 +19,7 @@ use App\Models\OrdemServicoMarcacao;
 use App\Models\OrdemServicoPecas;
 use App\Models\OrdemServicoServicos;
 use App\Models\PedidoCompra;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\Produto;
 use App\Models\Produtossolicitacoes;
 use App\Models\RelacaoSolicitacaoPeca;

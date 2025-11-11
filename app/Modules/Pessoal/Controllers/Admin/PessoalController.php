@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Pessoal\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Departamento;
@@ -8,10 +8,10 @@ use App\Models\Endereco;
 use App\Models\Estado;
 use App\Models\Filial;
 use App\Models\Municipio;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\Rotas;
 use App\Models\Telefone;
-use App\Models\TipoPessoal;
+use App\Modules\Pessoal\Models\TipoPessoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
