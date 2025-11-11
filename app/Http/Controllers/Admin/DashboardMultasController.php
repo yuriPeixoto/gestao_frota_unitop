@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Licenciamentos;
+use App\Modules\Certificados\Models\Licenciamentos;
 use App\Models\SmartecVeiculo;
 use App\Models\VSmartecMultasSneDetran;
 use App\Models\SmartecNotificacoesSneDetran;

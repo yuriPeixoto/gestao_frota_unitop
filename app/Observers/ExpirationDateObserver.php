@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\CertificadoVeiculos;
+use App\Modules\Certificados\Models\CertificadoVeiculos;
 use Carbon\Carbon;
 
 class ExpirationDateObserver

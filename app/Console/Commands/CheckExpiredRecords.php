@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\CertificadoVeiculos;
+use App\Modules\Certificados\Models\CertificadoVeiculos;
 use Carbon\Carbon;
 
 class CheckExpiredRecords extends Command

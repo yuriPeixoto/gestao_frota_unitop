@@ -335,7 +335,8 @@ Route::group([
     // Módulo de Abastecimentos (estrutura modular)
     require __DIR__ . '/modules/abastecimentos.php';
     require __DIR__ . '/atrelamentoveiculos.php';
-    require __DIR__ . '/certificados.php';
+    // Módulo de Certificados e Vencimentário (estrutura modular)
+    require __DIR__ . '/modules/certificados.php';
     require __DIR__ . '/compras.php';
     require __DIR__ . '/configuracoes.php';
     require __DIR__ . '/console.php';
@@ -367,7 +368,6 @@ Route::group([
     // Módulo de Sinistros (estrutura modular)
     require __DIR__ . '/modules/sinistros.php';
     require __DIR__ . '/veiculos.php';
-    require __DIR__ . '/vencimentario.php';
     require __DIR__ . '/anexos.php';
     require __DIR__ . '/imobilizado.php';
     require __DIR__ . '/relatoriosmanutencao.php';

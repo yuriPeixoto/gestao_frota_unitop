@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\PermissionHelper;
-use App\Models\CertificadoVeiculos;
+use App\Modules\Certificados\Models\CertificadoVeiculos;
 use App\Modules\Sinistros\Models\HistoricoEventosSinistro;
 use App\Models\User;
 use App\Observers\ExpirationDateObserver;
