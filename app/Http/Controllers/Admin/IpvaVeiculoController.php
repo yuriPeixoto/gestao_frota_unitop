@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\IpvaVeiculo;
+use App\Modules\Certificados\Models\IpvaVeiculo;
 use App\Models\ParcelasIpva;
 use App\Models\Veiculo;
 use App\Models\VFilial;

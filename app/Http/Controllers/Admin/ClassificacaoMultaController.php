@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ClassificacaoMulta;
+use App\Modules\Certificados\Models\ClassificacaoMulta;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
