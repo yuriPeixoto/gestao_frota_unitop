@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BaseVeiculo;
-use App\Models\CadastroImobilizado;
+use App\Modules\Imobilizados\Models\CadastroImobilizado;
 use App\Models\ControlesVeiculo;
 use App\Models\Departamento;
 use App\Models\Estado;

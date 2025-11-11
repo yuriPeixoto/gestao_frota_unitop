@@ -11,7 +11,7 @@ use App\Models\ModeloVeiculo;
 use App\Models\Produto;
 use App\Models\ProdutoXaplicacao;
 use App\Models\SubgrupoServico;
-use App\Models\TipoImobilizado;
+use App\Modules\Imobilizados\Models\TipoImobilizado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\UnidadeProduto;

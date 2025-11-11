@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\PermissionHelper;
 use App\Http\Controllers\Controller;
-use App\Models\DevolucaoImobilizadoVeiculo;
+use App\Modules\Imobilizados\Models\DevolucaoImobilizadoVeiculo;
 use App\Models\InconsistenciaTruckPag;
 use App\Models\PedidoCompra;
 use App\Models\Produto;
 use App\Models\SolicitacaoCompra;
-use App\Models\TransferenciaImobilizadoVeiculo;
-use App\Models\VEstoqueImobilizado;
+use App\Modules\Imobilizados\Models\TransferenciaImobilizadoVeiculo;
+use App\Modules\Imobilizados\Models\VEstoqueImobilizado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

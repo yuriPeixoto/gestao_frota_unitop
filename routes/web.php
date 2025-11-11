@@ -369,11 +369,11 @@ Route::group([
     require __DIR__ . '/veiculos.php';
     require __DIR__ . '/vencimentario.php';
     require __DIR__ . '/anexos.php';
-    require __DIR__ . '/imobilizado.php';
+    // Módulo de Imobilizados (estrutura modular)
+    require __DIR__ . '/modules/imobilizados.php';
     require __DIR__ . '/relatoriosmanutencao.php';
     require __DIR__ . '/relatorios.php';
     require __DIR__ . '/relatoriospneus.php';
-    require __DIR__ . '/relatorioimobilizado.php';
     require __DIR__ . '/relatoriopessoal.php';
     require __DIR__ . '/relatorioveiculo.php';
     require __DIR__ . '/relatoriosestoque.php';
