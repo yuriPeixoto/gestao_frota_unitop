@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\ChecklistApiController;
+use App\Modules\Checklist\Controllers\Api\ChecklistApiController;
 use Illuminate\Support\Facades\Route;
 
 // ========================================

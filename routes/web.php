@@ -385,7 +385,8 @@ Route::group([
 });
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/checklist-bridge.php';
+// Módulo de Checklist (estrutura modular - API Bridge + React Dashboard)
+require __DIR__ . '/modules/checklist.php';
 require __DIR__ . '/notifications.php';
 require __DIR__ . '/tickets.php';
 

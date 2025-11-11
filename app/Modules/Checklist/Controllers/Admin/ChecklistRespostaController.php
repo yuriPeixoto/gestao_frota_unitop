@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Checklist\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use App\Models\ChecklistResposta;
-use App\Models\CheckList;
+use App\Modules\Checklist\Models\ChecklistResposta;
+use App\Modules\Checklist\Models\CheckList;
 use Illuminate\Support\Facades\DB;
 
 enum Status: string

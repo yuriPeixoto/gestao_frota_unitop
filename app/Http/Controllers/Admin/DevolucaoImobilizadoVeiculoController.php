@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CheckList;
+use App\Modules\Checklist\Models\CheckList;
 use App\Models\DepartamentoTransferencia;
 use App\Models\Filial;
 use App\Models\Departamento;
