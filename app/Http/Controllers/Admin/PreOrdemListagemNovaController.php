@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Departamento;
 use App\Models\Filial;
 use App\Models\GrupoResolvedor;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\Telefone;
 use App\Models\OrdemServico;
 use App\Models\PreOrdemServico;

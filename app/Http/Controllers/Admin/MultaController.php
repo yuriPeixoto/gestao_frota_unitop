@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Modules\Certificados\Models\Multa;
 use App\Modules\Certificados\Models\DetalheMulta;
 use App\Models\Veiculo;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Modules\Certificados\Models\ClassificacaoMulta;
 use App\Models\TipoOrgaoSinistro;
 use App\Models\Municipio;

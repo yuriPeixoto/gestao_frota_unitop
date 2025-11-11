@@ -356,6 +356,9 @@ Route::group([
     require __DIR__ . '/manutencaoservico.php';
     require __DIR__ . '/manutencaoservicos.php';
     require __DIR__ . '/multas.php';
+    // Módulo de Pessoal (estrutura modular)
+    require __DIR__ . '/modules/pessoal.php';
+    // Rotas de Contratos de Fornecedores (temporariamente no pessoal.php original, mover para módulo de Compras)
     require __DIR__ . '/pessoal.php';
     require __DIR__ . '/pneus.php';
     require __DIR__ . '/relacaodespesasveiculos.php';

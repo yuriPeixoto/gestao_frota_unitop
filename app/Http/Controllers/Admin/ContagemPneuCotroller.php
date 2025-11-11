@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ContagemPneu;
 use App\Models\Filial;
 use App\Models\ModeloPneu;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Traits\SanitizesMonetaryValues;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

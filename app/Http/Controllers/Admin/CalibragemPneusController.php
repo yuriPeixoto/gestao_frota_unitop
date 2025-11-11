@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CalibragemPneus;
 use App\Models\CalibragemPneusItens;
 use App\Models\Veiculo;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\Filial;
 use App\Models\UserFilial;
 use Illuminate\Support\Carbon;

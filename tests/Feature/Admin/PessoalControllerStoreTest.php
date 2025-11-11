@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use App\Models\TipoPessoal;
+use App\Modules\Pessoal\Models\TipoPessoal;
 use App\Models\Departamento;
 use App\Models\Filial;
 use App\Models\Rotas;

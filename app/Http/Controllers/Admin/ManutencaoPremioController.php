@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\DistanciaMotoristaAuxiliar;
 use App\Models\DistanciasSemMotoristaPremio;
-use App\Models\Pessoal;
+use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\Veiculo;
 use App\Models\VPremioDeflatores;
 use App\Models\VPremioDistanciaSemLogin;

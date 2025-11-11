@@ -6,7 +6,7 @@ use App\Helpers\PermissionHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Departamento;
 use App\Models\Permission;
-use App\Models\TipoPessoal;
+use App\Modules\Pessoal\Models\TipoPessoal;
 use App\Models\User;
 use App\Models\VFilial;
 use Illuminate\Http\Request;
