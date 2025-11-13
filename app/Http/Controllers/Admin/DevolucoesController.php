@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\TransferenciaDiretaEstoque;
-use App\Models\TransferenciaDiretaEstoqueItens;
-use App\Models\DevolucaoTransferenciaEstoque;
-use App\Models\DevolucaoTransferenciaEstoqueRequisicao;
+use App\Modules\Estoque\Models\TransferenciaDiretaEstoque;
+use App\Modules\Estoque\Models\TransferenciaDiretaEstoqueItens;
+use App\Modules\Estoque\Models\DevolucaoTransferenciaEstoque;
+use App\Modules\Estoque\Models\DevolucaoTransferenciaEstoqueRequisicao;
 use App\Models\DevolucaoMatrizItens;
-use App\Models\TransferenciaEstoque;
-use App\Models\TransferenciaEstoqueItens;
-use App\Models\HistoricoMovimentacaoEstoque;
+use App\Modules\Estoque\Models\TransferenciaEstoque;
+use App\Modules\Estoque\Models\TransferenciaEstoqueItens;
+use App\Modules\Estoque\Models\HistoricoMovimentacaoEstoque;
 use App\Models\RelacaoSolicitacoesPecas;
 use App\Models\Vfilial;
 use App\Models\Departamento;

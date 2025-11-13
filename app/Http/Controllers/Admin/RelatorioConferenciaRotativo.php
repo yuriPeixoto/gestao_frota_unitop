@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Estoque;
+use App\Modules\Estoque\Models\Estoque;
 use App\Models\Filial;
 use App\Models\VconferenciaRotativoDiario;
 use Dompdf\Dompdf;

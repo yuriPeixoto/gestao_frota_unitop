@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NotaFiscalEntrada;
 use App\Models\NotaFiscalProdutos;
-use App\Models\HistoricoMovimentacaoEstoque;
+use App\Modules\Estoque\Models\HistoricoMovimentacaoEstoque;
 use App\Models\Municipio;
 use App\Models\Estado;
 use App\Models\Filial;

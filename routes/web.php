@@ -343,7 +343,8 @@ Route::group([
     require __DIR__ . '/controlemanutancaofrota.php';
     // require __DIR__ . '/descartepneus.php';
     // require __DIR__ . '/devolucaosaidaestoque.php';
-    require __DIR__ . '/estoque.php';
+    // Módulo de Estoque (estrutura modular)
+    require __DIR__ . '/modules/estoque.php';
     require __DIR__ . '/ipvaveiculo.php';
     require __DIR__ . '/lancIpvalicenciamentoseguro.php';
     require __DIR__ . '/licenciamentoveiculo.php';
@@ -380,7 +381,7 @@ Route::group([
     require __DIR__ . '/relatoriospneus.php';
     require __DIR__ . '/relatoriopessoal.php';
     require __DIR__ . '/relatorioveiculo.php';
-    require __DIR__ . '/relatoriosestoque.php';
+    // Relatórios de Estoque movidos para o módulo modular
     require __DIR__ . '/relatoriocompras.php';
     // Relatórios de Sinistros movidos para o módulo modular
     require __DIR__ . '/relatoriogerenciais.php';
