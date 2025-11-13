@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\RelatorioContCorrenteFornecedor;
 use App\Http\Controllers\Admin\RelatorioExtratoIpva;
 use App\Http\Controllers\Admin\RelatorioHistoricoKm;
 use App\Http\Controllers\Admin\RelatorioIpvaLicenciamentoVeiculo;
-use App\Http\Controllers\Admin\RelatorioMultas;
+use App\Modules\Multas\Controllers\Relatorios\RelatorioMultas;
 use App\Http\Controllers\Admin\RelatorioTransferenciaVeiculo;
 use App\Http\Controllers\Admin\RelatorioVeiculos;
 use App\Http\Controllers\Admin\UserController;
