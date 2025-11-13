@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace App\Modules\Tickets\Enums;
 
 enum TicketPriority: string
 {

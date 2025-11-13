@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services;
+namespace App\Modules\Tickets\Services;
 
-use App\Enums\TicketPriority;
-use App\Enums\TicketStatus;
-use App\Enums\TicketType;
-use App\Models\SupportTicket;
-use App\Models\TicketAssignment;
-use App\Models\TicketResponse;
-use App\Models\TicketStatusHistory;
+use App\Modules\Tickets\Enums\TicketPriority;
+use App\Modules\Tickets\Enums\TicketStatus;
+use App\Modules\Tickets\Enums\TicketType;
+use App\Modules\Tickets\Models\SupportTicket;
+use App\Modules\Tickets\Models\TicketAssignment;
+use App\Modules\Tickets\Models\TicketResponse;
+use App\Modules\Tickets\Models\TicketStatusHistory;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Modules\Tickets\Controllers;
 
-use App\Enums\TicketType;
+use App\Modules\Tickets\Enums\TicketType;
 use App\Http\Controllers\Controller;
-use App\Models\SupportTicket;
-use App\Services\TicketService;
+use App\Modules\Tickets\Models\SupportTicket;
+use App\Modules\Tickets\Services\TicketService;
 use App\Traits\ExportableTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

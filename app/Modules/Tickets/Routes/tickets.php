@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\QualityController;
-use App\Http\Controllers\TicketController;
+use App\Modules\Tickets\Controllers\QualityController;
+use App\Modules\Tickets\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
