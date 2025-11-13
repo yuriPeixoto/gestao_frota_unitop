@@ -87,7 +87,7 @@ Route::group([
     // TODO checar se essas rotas pertencem à categoria 'configuracoes'
 
     // Rota para Dashboard de Multas
-    Route::get('/dashboard-multas', [App\Http\Controllers\Admin\DashboardMultasController::class, 'index'])
+    Route::get('/dashboard-multas', [App\Modules\Multas\Controllers\Dashboard\DashboardMultasController::class, 'index'])
         ->name('dashboard-multas.index');
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
@@ -355,7 +355,8 @@ Route::group([
     require __DIR__ . '/manutencaopreordemservicofinalizada.php';
     require __DIR__ . '/manutencaoservico.php';
     require __DIR__ . '/manutencaoservicos.php';
-    require __DIR__ . '/multas.php';
+    // Módulo de Multas (estrutura modular)
+    require __DIR__ . '/modules/multas.php';
     // Módulo de Pessoal (estrutura modular)
     require __DIR__ . '/modules/pessoal.php';
     // Rotas de Contratos de Fornecedores (temporariamente no pessoal.php original, mover para módulo de Compras)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Multas\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Certificados\Models\Licenciamentos;

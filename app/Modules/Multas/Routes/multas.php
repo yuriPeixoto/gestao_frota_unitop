@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\MultaController;
-use App\Http\Controllers\Admin\ClassificacaoMultaController;
+use App\Modules\Multas\Controllers\Admin\MultaController;
+use App\Modules\Multas\Controllers\Admin\ClassificacaoMultaController;
 use App\Http\Controllers\Admin\MunicipioController;
 use App\Http\Controllers\Admin\PessoalController;
 use App\Http\Controllers\Admin\VeiculoController;
