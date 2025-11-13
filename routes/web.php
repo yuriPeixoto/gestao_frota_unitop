@@ -385,7 +385,8 @@ Route::group([
     // Relatórios de Sinistros movidos para o módulo modular
     require __DIR__ . '/relatoriogerenciais.php';
     require __DIR__ . '/trocafiliais.php';
-    require __DIR__ . '/relatorio_premiacao.php';
+    // Módulo de Prêmios Carvalima (estrutura modular)
+    require __DIR__ . '/modules/premios.php';
 });
 
 require __DIR__ . '/auth.php';

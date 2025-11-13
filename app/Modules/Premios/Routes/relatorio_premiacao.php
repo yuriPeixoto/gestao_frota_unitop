@@ -1,25 +1,25 @@
 <?php
 
-use App\Http\Controllers\Admin\DeflatoresCarvalimaController;
-use App\Http\Controllers\Admin\DeflatoresEventosMotoristasController;
-use App\Http\Controllers\Admin\FeriadoPremioSuperacaoController;
-use App\Http\Controllers\Admin\FranquiaPremiroMensalController;
-use App\Http\Controllers\Admin\FranquiaPremiroRvController;
-use App\Http\Controllers\Admin\FranquiPremiroRvController;
-use App\Http\Controllers\Admin\ManutencaoPremioController;
-use App\Http\Controllers\Admin\PremioSuperacaoController;
-use App\Http\Controllers\Admin\RelatorioConferenciaPremioRvMensal;
+use App\Modules\Premios\Controllers\Admin\DeflatoresCarvalimaController;
+use App\Modules\Premios\Controllers\Admin\DeflatoresEventosMotoristasController;
+use App\Modules\Premios\Controllers\Admin\FeriadoPremioSuperacaoController;
+use App\Modules\Premios\Controllers\Admin\FranquiaPremiroMensalController;
+use App\Modules\Premios\Controllers\Admin\FranquiaPremiroRvController;
+use App\Modules\Premios\Controllers\Admin\FranquiPremiroRvController;
+use App\Modules\Premios\Controllers\Admin\ManutencaoPremioController;
+use App\Modules\Premios\Controllers\Admin\PremioSuperacaoController;
+use App\Modules\Premios\Controllers\Relatorios\RelatorioConferenciaPremioRvMensal;
 use App\Http\Controllers\Admin\RelatorioConferenciaTabelaoController;
 use App\Http\Controllers\Admin\RelatorioExtratoMotoristaRhController;
 use App\Http\Controllers\Admin\RelatorioMotoristasNaoCalcudados;
-use App\Http\Controllers\Admin\RelatorioPremiacaoMotoristaController;
-use App\Http\Controllers\Admin\RelatorioPremioConferenciaController;
-use App\Http\Controllers\Admin\RelatorioPremioDeflatoresController;
+use App\Modules\Premios\Controllers\Relatorios\RelatorioPremiacaoMotoristaController;
+use App\Modules\Premios\Controllers\Relatorios\RelatorioPremioConferenciaController;
+use App\Modules\Premios\Controllers\Relatorios\RelatorioPremioDeflatoresController;
 use App\Http\Controllers\Admin\RelatorioValoresExcedentesController;
 use App\Http\Controllers\Admin\RelatorioVeiculosSemLogin;
-use App\Http\Controllers\Admin\TipoOperacaoController;
+use App\Modules\Premios\Controllers\Admin\TipoOperacaoController;
 use App\Models\JornadaFeriado;
-use App\Models\PremioSuperacao;
+use App\Modules\Premios\Models\PremioSuperacao;
 use Illuminate\Support\Facades\Route;
 
 
