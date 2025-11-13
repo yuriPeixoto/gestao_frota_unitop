@@ -1,40 +1,51 @@
 <?php
 
-namespace App\Models;
+namespace App\Modules\Premios\Models;
 
 use App\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
 
-class FranquiaPremioRv extends Model
+class FranquiaPremioMensal extends Model
 {
     use LogsActivity;
 
-    protected $table = 'franquia_premio_rv';
-    protected $primaryKey = 'id_franquia_premio_rv';
+    protected $table = 'franquia_premio_mensal';
+    protected $primaryKey = 'id_franquia_premio_mensal';
     public $timestamps = false;
     protected $fillable = [
         'data_inclusao',
         'id_operacao',
-        'id_categoria',
         'id_tipoequipamento',
         'id_subcategoria',
         'step',
         'media',
-        'valor',
         'id_filial',
         'usuario_inclusao',
-        'pesobruto',
         'ativo',
         'clonado',
+        '_1000',
+        '_2000',
+        '_3000',
+        '_4000',
+        '_5000',
+        '_6000',
+        '_7000',
+        '_8000',
+        '_9000',
+        '_10000',
+        '_11000',
+        '_12000',
+        '_13000',
+        '_14000',
+        '_15000',
+        '_16000',
+        '_17000',
+        '_18000',
+        '_19000',
+        '_20000',
+        '_0_1000',
     ];
-    protected $casts = [
-        'ativo' => 'boolean',
 
-    ];
-    public function categoria()
-    {
-        return $this->belongsTo(CategoriaVeiculo::class, 'id_categoria', 'id_categoria');
-    }
     public function subcategoria()
     {
         return $this->belongsTo(SubCategoriaVeiculo::class, 'id_subcategoria', 'id_subcategoria');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Modules\Premios\Models;
 
 use App\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
