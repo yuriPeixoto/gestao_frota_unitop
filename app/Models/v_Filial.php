@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Estoque;
+use App\Modules\Estoque\Models\Estoque;
 
 class v_Filial extends Model
 {
