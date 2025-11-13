@@ -392,7 +392,8 @@ require __DIR__ . '/auth.php';
 // Módulo de Checklist (estrutura modular - API Bridge + React Dashboard)
 require __DIR__ . '/modules/checklist.php';
 require __DIR__ . '/notifications.php';
-require __DIR__ . '/tickets.php';
+// Módulo de Tickets/Chamados (estrutura modular)
+require __DIR__ . '/modules/tickets.php';
 
 Route::get('admin/ajax-get-veiculo-dados', [App\Http\Controllers\Admin\AbastecimentoController::class, 'ajaxGetVeiculoDados'])
     ->middleware(['auth', '2fa']);

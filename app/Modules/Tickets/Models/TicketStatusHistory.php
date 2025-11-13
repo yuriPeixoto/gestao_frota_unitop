@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Modules\Tickets\Models;
 
-use App\Enums\TicketStatus;
+use App\Modules\Tickets\Enums\TicketStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
