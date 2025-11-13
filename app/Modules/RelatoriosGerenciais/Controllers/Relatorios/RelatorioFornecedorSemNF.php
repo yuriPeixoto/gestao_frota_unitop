@@ -1,21 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\RelatoriosGerenciais\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Models\Fornecedor;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
 
-class RelatorioCustosVariaveisPorDepartamento extends Controller
+class RelatorioFornecedorSemNF extends Controller
 {
     public function index(Request $request)
     {
-        $this->normalizeSmartSelectParams($request);
-
         $query = Veiculo::query();
 
         if ($request->filled('data_inclusao') && $request->filled('data_final')) {
@@ -25,67 +22,45 @@ class RelatorioCustosVariaveisPorDepartamento extends Controller
             ]);
         }
 
-        if ($request->filled('id_veiculo')) {
-            $query->wher('id_veiculo', $request->input('id_veiculo'));
-        }
-        if ($request->filled('id_departamento')) {
-            $query->wher('id_departamento', $request->input('id_departamento'));
-        }
-        if ($request->filled('id_filial')) {
-            $query->wher('id_filial', $request->input('id_filial'));
+        if ($request->filled('id_fornecedor')) {
+            $query->where('id_fornecedor', $request->input('id_fornecedor'));
         }
 
-        $filial = Filial::select('id as value', 'name as label')
-            ->orderBy('name')
-            ->get();
+        if ($request->filled('id_ordem_servico')) {
+            $query->whereHas('ordemServico', function ($q) use ($request) {
+                $q->where('id_ordem_servico', $request->input('id_ordem_servico'));
+            });
+        }
 
-        $placa = Veiculo::select('id_veiculo as value', 'placa as label')
-            ->orderBy('placa')
-            ->limit(30)
-            ->get();
+        $fornecedor = Fornecedor::select('id_fornecedor as value', 'nome_fornecedor as label')->orderBy('nome_fornecedor')->limit(30)->get();
 
-        $departamento = Departamento::select('id_departamento as value', 'descricao_departamento as label')
-            ->orderBy('descricao_departamento')
-            ->get();
-
-        return view('admin.relatoriocustospordepartamento.index', compact('filial', 'placa', 'departamento'));
+        return view('admin.relatoriofornecedorsemnf.index', compact('fornecedor'));
     }
 
     public function gerarPdf(Request $request)
     {
-        ini_set('max_execution_time', 300); // 300 segundos = 5 minutos
-        set_time_limit(300); // segurança extra
-
         Log::info('Request completo:', $request->all());
         Log::info('Query params:', $request->query());
         Log::info('Post params:', $request->post());
 
-        // $filial       = empty($request['id_filial']) ? "0" : $request['id_filial'];
-        // $tipo         = empty($request['id_tipo_equipamento']) ? "0" : $request['id_tipo_equipamento'];
+        $filial       = empty($request['id_filial']) ? "0" : $request['id_filial'];
+        $tipo         = empty($request['id_tipo_equipamento']) ? "0" : $request['id_tipo_equipamento'];
 
         if (!empty($request['data_inclusao']) && !empty($request['data_final'])) {
 
-            if (empty($request['id_filial'])) {
-                $id_filial_inicial = 0;
-                $id_filial_final  = 999999;
+            if (empty($request['id_fornecedor'])) {
+                $id_fornecedor_inicial = 0;
+                $id_fornecedor_final  = 99999999;
             } else {
-                $id_filial_inicial = $request['id_filial'];
-                $id_filial_final  = $request['id_filial'];
+                $id_fornecedor_inicial = $request['id_fornecedor'];
+                $id_fornecedor_final  = $request['id_fornecedor'];
             }
-
-            if (empty($request['id_departamento'])) {
-                $id_departamento_inicial = 0;
-                $id_departamento_final  = 999999;
+            if (empty($request['id_ordem_servico'])) {
+                $id_ordem_inicial = 0;
+                $id_ordem_final   = 99999999;
             } else {
-                $id_departamento_inicial = $request['id_departamento'];
-                $id_departamento_final  = $request['id_departamento'];
-            }
-            if (empty($request['id_veiculo'])) {
-                $id_veiculo_inicial = 0;
-                $id_veiculo_final  = 999999;
-            } else {
-                $id_veiculo_inicial = $request['id_veiculo'];
-                $id_veiculo_final  = $request['id_veiculo'];
+                $id_ordem_inicial = $request['id_ordem_servico'];
+                $id_ordem_final   = $request['id_ordem_servico'];
             }
 
 
@@ -95,16 +70,14 @@ class RelatorioCustosVariaveisPorDepartamento extends Controller
             $parametros = array(
                 'P_data_inicial' => $datainicial,
                 'P_data_final' => $datafinal,
-                'P_id_filial_inicial' => $id_filial_inicial,
-                'P_id_filial_final' => $id_filial_final,
-                'P_id_departamento_inicial' => $id_departamento_inicial,
-                'P_id_departamento_final' => $id_departamento_final,
-                'P_id_veiculo_inicial' => $id_veiculo_inicial,
-                'P_id_veiculo_final' => $id_veiculo_final
+                'P_id_fornecedor_inicial' => $id_fornecedor_inicial,
+                'P_id_fornecedor_final' => $id_fornecedor_final,
+                'P_id_ordem_inicial' => $id_ordem_inicial,
+                'P_id_ordem_final' => $id_ordem_final
             );
 
 
-            $name = 'custos_variaveis_placa_detalhado';
+            $name = 'fornecedor_sem_nf';
             $agora = now()->format('d-m-Y_H-i');
             $relatorio = "{$name}_{$agora}.pdf";
 
@@ -178,40 +151,28 @@ class RelatorioCustosVariaveisPorDepartamento extends Controller
 
     public function gerarExcel(Request $request)
     {
-        ini_set('max_execution_time', 300); // 300 segundos = 5 minutos
-        set_time_limit(300); // segurança extra
-
         Log::info('Request completo:', $request->all());
         Log::info('Query params:', $request->query());
         Log::info('Post params:', $request->post());
 
         $filial       = empty($request['id_filial']) ? "0" : $request['id_filial'];
-        $placa         = empty($request['id_veiculo']) ? "0" : $request['id_veiculo'];
-        $departamento       = empty($request['id_departamento']) ? "0" : $request['id_departamento'];
+        $tipo         = empty($request['id_tipo_equipamento']) ? "0" : $request['id_tipo_equipamento'];
 
         if (!empty($request['data_inclusao']) && !empty($request['data_final'])) {
 
-            if (empty($request['id_filial'])) {
-                $id_filial_inicial = 0;
-                $id_filial_final  = 999999;
+            if (empty($request['id_fornecedor'])) {
+                $id_fornecedor_inicial = 0;
+                $id_fornecedor_final  = 99999999;
             } else {
-                $id_filial_inicial = $request['id_filial'];
-                $id_filial_final  = $request['id_filial'];
+                $id_fornecedor_inicial = $request['id_fornecedor'];
+                $id_fornecedor_final  = $request['id_fornecedor'];
             }
-
-            if (empty($request['id_departamento'])) {
-                $id_departamento_inicial = 0;
-                $id_departamento_final  = 999999;
+            if (empty($request['id_ordem_servico'])) {
+                $id_ordem_inicial = 0;
+                $id_ordem_final   = 99999999;
             } else {
-                $id_departamento_inicial = $request['id_departamento'];
-                $id_departamento_final  = $request['id_departamento'];
-            }
-            if (empty($request['id_veiculo'])) {
-                $id_veiculo_inicial = 0;
-                $id_veiculo_final  = 999999;
-            } else {
-                $id_veiculo_inicial = $request['id_veiculo'];
-                $id_veiculo_final  = $request['id_veiculo'];
+                $id_ordem_inicial = $request['id_ordem_servico'];
+                $id_ordem_final   = $request['id_ordem_servico'];
             }
 
 
@@ -221,15 +182,14 @@ class RelatorioCustosVariaveisPorDepartamento extends Controller
             $parametros = array(
                 'P_data_inicial' => $datainicial,
                 'P_data_final' => $datafinal,
-                'P_id_filial_inicial' => $id_filial_inicial,
-                'P_id_filial_final' => $id_filial_final,
-                'P_id_departamento_inicial' => $id_departamento_inicial,
-                'P_id_departamento_final' => $id_departamento_final,
-                'P_id_veiculo_inicial' => $id_veiculo_inicial,
-                'P_id_veiculo_final' => $id_veiculo_final
+                'P_id_fornecedor_inicial' => $id_fornecedor_inicial,
+                'P_id_fornecedor_final' => $id_fornecedor_final,
+                'P_id_ordem_inicial' => $id_ordem_inicial,
+                'P_id_ordem_final' => $id_ordem_final
             );
 
-            $name = 'custos_variaveis_placa_v2';
+
+            $name = 'fornecedor_sem_nf_v2';
             $agora = now()->format('d-m-Y_H-i');
             $relatorio = "{$name}_{$agora}.xls";
 

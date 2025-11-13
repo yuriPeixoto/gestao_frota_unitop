@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\RelatoriosGerenciais\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\Filial;
