@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\SolicitacaoCompra;
-use App\Models\ItemSolicitacaoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\ItemSolicitacaoCompra;
 use App\Models\Produto;
 use App\Modules\Manutencao\Models\Servico;
 use Illuminate\Support\Facades\Auth;

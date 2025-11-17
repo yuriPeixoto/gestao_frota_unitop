@@ -7,7 +7,7 @@ use App\Modules\Abastecimentos\Models\AbastecimentoManual;
 use App\Models\CategoriaVeiculo;
 use App\Models\Departamento;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Abastecimentos\Models\TipoCombustivel;
 use App\Models\TipoEquipamento;
 use App\Models\Veiculo;

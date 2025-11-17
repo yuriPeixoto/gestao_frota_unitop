@@ -5,7 +5,7 @@ namespace App\Modules\Manutencao\Controllers\Relatorios;
 use App\Http\Controllers\Controller;
 use App\Models\Departamento;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NfOrdemServico;
 use App\Models\OrdemServico;
 use App\Modules\Abastecimentos\Models\Tanque;

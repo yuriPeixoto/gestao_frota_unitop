@@ -4,7 +4,7 @@ namespace App\Modules\Abastecimentos\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Abastecimentos\Models\Tanque;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;

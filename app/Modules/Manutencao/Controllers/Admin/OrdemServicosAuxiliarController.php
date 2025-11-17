@@ -4,7 +4,7 @@ namespace App\Modules\Manutencao\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\GerarOrdemServicoAuxiliar;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\VFilial;
 use App\Models\Departamento;
 use App\Modules\Veiculos\Models\Veiculo;

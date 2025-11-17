@@ -5,7 +5,7 @@ namespace App\Modules\Abastecimentos\Controllers;
 use App\Modules\Abastecimentos\Models\Tanque;
 use App\Http\Controllers\Controller;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Abastecimentos\Models\TipoCombustivel;
 use Illuminate\Http\Request;
 use Carbon\Carbon;

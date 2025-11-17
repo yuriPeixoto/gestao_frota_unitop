@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;

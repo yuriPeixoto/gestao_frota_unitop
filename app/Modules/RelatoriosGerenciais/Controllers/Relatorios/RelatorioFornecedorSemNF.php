@@ -3,7 +3,7 @@
 namespace App\Modules\RelatoriosGerenciais\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

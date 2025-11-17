@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\SolicitacaoCompra;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\PedidoCompra;
 use Illuminate\Support\Facades\Log;
 
 class CancelamentoService

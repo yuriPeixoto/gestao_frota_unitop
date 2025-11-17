@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

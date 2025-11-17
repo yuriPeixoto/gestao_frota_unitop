@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Orcamento;
+use App\Modules\Compras\Models\Orcamento;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

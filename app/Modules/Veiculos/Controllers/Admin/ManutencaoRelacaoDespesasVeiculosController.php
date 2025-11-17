@@ -5,7 +5,7 @@ namespace App\Modules\Veiculos\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Departamento;
 use App\Models\DespesasVeiculos;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Manutencao\Models\Servico;
 use App\Models\TipoDespesas;
 use App\Models\Veiculo;

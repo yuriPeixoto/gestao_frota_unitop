@@ -3,7 +3,7 @@
 namespace App\Modules\Checklist\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use Illuminate\Http\Request;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
 use Illuminate\Support\Facades\Log; // Se quiser logar exceções

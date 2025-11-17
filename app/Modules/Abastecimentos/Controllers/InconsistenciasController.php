@@ -10,7 +10,7 @@ use App\Models\Departamento;
 use App\Models\VFilial;
 use App\Modules\Abastecimentos\Models\TipoCombustivel;
 use App\Modules\Abastecimentos\Models\Bomba;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
