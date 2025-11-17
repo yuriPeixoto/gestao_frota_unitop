@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Estoque\Models\Estoque;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\VconferenciaRotativoDiario;
 use Dompdf\Dompdf;
 use Dompdf\Options;

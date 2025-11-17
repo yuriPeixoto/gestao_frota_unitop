@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Modules\Compras\Models\Fornecedor;
 use App\Models\Motorista;
 use App\Modules\Veiculos\Models\Veiculo;

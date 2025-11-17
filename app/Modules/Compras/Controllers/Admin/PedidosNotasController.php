@@ -3,7 +3,7 @@
 namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Fornecedor;
 use App\Modules\Manutencao\Models\NfOrdemServico;
 use App\Models\NotaFiscalAvulsa;

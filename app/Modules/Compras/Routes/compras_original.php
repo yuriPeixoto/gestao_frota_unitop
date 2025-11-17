@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\NotaFiscalAvulsaController;
 use App\Http\Controllers\Admin\PedidosNotasController;
 use App\Http\Controllers\Admin\NotasLancadasController;
 use App\Http\Controllers\Admin\LancamentoNotasController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ValidarCotacaoController;
 use Illuminate\Support\Facades\Auth;
 

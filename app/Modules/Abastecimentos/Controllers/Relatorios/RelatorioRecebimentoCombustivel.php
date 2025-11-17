@@ -3,7 +3,7 @@
 namespace App\Modules\Abastecimentos\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Abastecimentos\Models\Tanque;
 use App\Models\Veiculo;

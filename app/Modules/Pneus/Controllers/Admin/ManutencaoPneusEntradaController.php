@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Checklist\Models\CheckListRecebimentoFornecedor;
 use App\Models\DescartePneu;
 use App\Models\DesenhoPneu;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Compras\Models\Fornecedor;
 use App\Models\HistoricoPneu;
 use App\Modules\Compras\Models\ItemSolicitacaoCompra;

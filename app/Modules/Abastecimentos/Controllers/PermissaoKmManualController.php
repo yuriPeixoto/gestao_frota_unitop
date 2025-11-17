@@ -4,10 +4,10 @@ namespace App\Modules\Abastecimentos\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\CategoriaVeiculo;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\PermissaoKmManual;
-use App\Models\TipoCategoria;
+use App\Modules\Configuracoes\Models\TipoCategoria;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ExportableTrait;
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Veiculos\Models\ModeloVeiculo;
 use App\Modules\Manutencao\Models\OrdemServico;
 use App\Modules\Manutencao\Models\StatusOrdemServico;

@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\PermissionGroup;
-use App\Models\Permission;
+use App\Modules\Configuracoes\Models\PermissionGroup;
+use App\Modules\Configuracoes\Models\Permission;
 
 class FixPermissionGroups extends Command
 {

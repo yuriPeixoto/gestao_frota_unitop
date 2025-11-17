@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\NotificationTarget;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Notifications\SystemNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Log;

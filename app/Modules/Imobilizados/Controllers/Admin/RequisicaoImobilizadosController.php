@@ -3,12 +3,12 @@
 namespace App\Modules\Imobilizados\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Produto;
 use App\Modules\Imobilizados\Models\RelacaoImobilizados;
 use App\Modules\Imobilizados\Models\RelacaoImobilizadosItens;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

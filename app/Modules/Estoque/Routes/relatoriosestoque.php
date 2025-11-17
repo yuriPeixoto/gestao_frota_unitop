@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\RelatorioProdutosCadastrados;
 use App\Http\Controllers\Admin\RelatorioSaidaDepartamento;
 use App\Http\Controllers\Admin\ServicoController;
 use App\Http\Controllers\Admin\SolicitacaoCompraController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'consultaprodutostransferencia'], function () {

@@ -12,7 +12,7 @@ use App\Modules\Estoque\Models\TransferenciaDiretaEstoque;
 use App\Modules\Estoque\Models\TransferenciaDiretaEstoqueItens;
 use App\Modules\Estoque\Models\TransferenciaEstoque;
 use App\Modules\Estoque\Models\TransferenciaEstoqueItens;
-use App\Models\UserFilial;
+use App\Modules\Configuracoes\Models\UserFilial;
 use App\Models\VFilial;
 use App\Traits\ExportableTrait;
 use BaconQrCode\Renderer\RendererStyle\Fill;

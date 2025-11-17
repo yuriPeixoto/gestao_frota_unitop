@@ -2,13 +2,13 @@
 
 namespace App\Modules\Imobilizados\Services;
 
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Services\IntegracaoWhatssappCarvalimaService;
-use App\Models\DepartamentoTransferencia;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\DepartamentoTransferencia;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Compras\Models\Fornecedor;
-use App\Models\TelefoneTransferencia;
-use App\Models\TipoEquipamento;
+use App\Modules\Configuracoes\Models\TelefoneTransferencia;
+use App\Modules\Configuracoes\Models\TipoEquipamento;
 use App\Modules\Imobilizados\Models\DevolucaoImobilizadoVeiculo;
 use Illuminate\Support\Facades\Log;
 use App\Services\ChecklistService;

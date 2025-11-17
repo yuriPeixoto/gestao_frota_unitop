@@ -64,7 +64,7 @@ class CheckCompraApprovalLevel
     /**
      * Verifica se o usuário tem a alçada necessária para aprovar um valor específico
      *
-     * @param \App\Models\User $user
+     * @param \App\Modules\Configuracoes\Models\User $user
      * @param float $valor
      * @param int|null $pedidoId
      * @return bool
@@ -105,7 +105,7 @@ class CheckCompraApprovalLevel
     /**
      * Verifica se o pedido está relacionado à frota e o usuário é um gestor de frota
      *
-     * @param \App\Models\User $user
+     * @param \App\Modules\Configuracoes\Models\User $user
      * @param int|null $pedidoId
      * @return bool
      */

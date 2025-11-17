@@ -10,7 +10,7 @@ use App\Models\TipoOrdemServico;
 use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VFilial;
 use App\Models\StatusOrdemServico;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Traits\ExportableTrait;

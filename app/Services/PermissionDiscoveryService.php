@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Permission;
-use App\Models\PermissionGroup;
+use App\Modules\Configuracoes\Models\Permission;
+use App\Modules\Configuracoes\Models\PermissionGroup;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use ReflectionClass;

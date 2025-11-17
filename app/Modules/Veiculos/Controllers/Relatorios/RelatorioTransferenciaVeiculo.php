@@ -3,7 +3,7 @@
 namespace App\Modules\Veiculos\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\TransferenciaVeiculo;
 use App\Models\Veiculo;
 use Dompdf\Dompdf;

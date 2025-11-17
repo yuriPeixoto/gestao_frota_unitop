@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\VFilial;
 use Illuminate\Http\Request;
 

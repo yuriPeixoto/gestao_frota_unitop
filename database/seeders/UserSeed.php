@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\Departamento;
 
 class UserSeed extends Seeder

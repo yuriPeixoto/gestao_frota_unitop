@@ -3,7 +3,7 @@
 namespace App\Modules\Manutencao\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\OrdemServico;
 use App\Models\Servico;
 use Illuminate\Http\Request;

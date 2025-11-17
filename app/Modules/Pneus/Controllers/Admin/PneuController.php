@@ -7,7 +7,7 @@ use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NotaFiscalEntrada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\Pneu;
 use App\Models\ModeloPneu;
 use App\Models\ControleVidaPneus;

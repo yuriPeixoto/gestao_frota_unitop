@@ -9,7 +9,7 @@ use App\Models\NotaFiscalProdutos;
 use App\Modules\Estoque\Models\HistoricoMovimentacaoEstoque;
 use App\Models\Municipio;
 use App\Models\Estado;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\PedidoCompra;
 use App\Models\ProdutosPorFilial;
 use Illuminate\Support\Facades\Log;

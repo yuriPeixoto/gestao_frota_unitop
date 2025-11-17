@@ -3,9 +3,9 @@
 namespace App\Modules\Veiculos\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
-use App\Models\TipoEquipamento;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
+use App\Modules\Configuracoes\Models\TipoEquipamento;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

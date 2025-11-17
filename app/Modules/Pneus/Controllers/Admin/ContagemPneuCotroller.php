@@ -4,7 +4,7 @@ namespace App\Modules\Pneus\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContagemPneu;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\ModeloPneu;
 use App\Modules\Pessoal\Models\Pessoal;
 use App\Traits\SanitizesMonetaryValues;

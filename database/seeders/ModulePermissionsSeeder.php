@@ -185,7 +185,7 @@ class ModulePermissionsSeeder extends Seeder
             $newPermissions = array_unique($newPermissions);
 
             // Aplicar permissões
-            $user = \App\Models\User::find($userId);
+            $user = \App\Modules\Configuracoes\Models\User::find($userId);
             if ($user) {
                 try {
                     // Dar permissão de acesso aos módulos baseado nas permissões antigas

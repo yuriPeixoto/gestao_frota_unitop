@@ -23,7 +23,7 @@ use App\Modules\Pneus\Controllers\Relatorios\RelatorioRequisicaoPneusFinalizadas
 use App\Modules\Pneus\Controllers\Relatorios\RelatorioRodizioPneus;
 use App\Modules\Pneus\Controllers\Relatorios\RelatorioVendaPneus;
 use App\Http\Controllers\Admin\RequisicaoPneusVendasController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use App\Models\BaseVeiculo;
 use Illuminate\Support\Facades\Route;
 

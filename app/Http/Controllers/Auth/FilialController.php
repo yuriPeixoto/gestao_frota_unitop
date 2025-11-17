@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\VFilial;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

@@ -4,12 +4,12 @@ namespace App\Services;
 
 use App\Modules\Compras\Models\Cotacoes;
 use App\Modules\Compras\Models\CotacoesItens;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Compras\Models\ItemSolicitacaoCompra;
 use App\Modules\Compras\Models\PedidoCompra;
 use App\Modules\Compras\Models\SolicitacaoCompra;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\VcotacoesMenosValor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

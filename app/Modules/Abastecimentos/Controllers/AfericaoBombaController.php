@@ -8,7 +8,7 @@ use App\Modules\Abastecimentos\Models\AbastecimentoIntegracao;
 use App\Modules\Abastecimentos\Models\EntradaAfericaoAbastecimento;
 use App\Modules\Abastecimentos\Models\Bomba;
 use App\Modules\Abastecimentos\Models\Tanque;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Traits\ExportableTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;

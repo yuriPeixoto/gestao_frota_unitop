@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log; // Se quiser logar exceções
 use App\Helpers\TDate;
 use App\Http\Controllers\Controller;
 use App\Modules\Checklist\Models\CheckList;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Veiculo;
 
 class RelatorioChecklistController extends Controller

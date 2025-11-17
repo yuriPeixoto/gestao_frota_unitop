@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Modules\Compras\Models\SolicitacaoCompra;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Support\Facades\Log;
 
 class CotacoesPolicy

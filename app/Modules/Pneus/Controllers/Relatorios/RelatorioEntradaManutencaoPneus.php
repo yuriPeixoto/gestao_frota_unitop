@@ -4,7 +4,7 @@ namespace App\Modules\Pneus\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\ControleVidaPneus;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\ModeloPneu;
 use App\Models\Pneu;
 use App\Models\VFilial;

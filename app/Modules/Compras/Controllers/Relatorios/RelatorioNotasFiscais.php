@@ -3,7 +3,7 @@
 namespace App\Modules\Compras\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Fornecedor;
 use App\Models\NotaFiscalEntrada;
 use Illuminate\Http\Request;

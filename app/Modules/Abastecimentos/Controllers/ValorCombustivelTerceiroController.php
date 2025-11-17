@@ -4,7 +4,7 @@ namespace App\Modules\Abastecimentos\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Abastecimentos\Models\Bomba;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Abastecimentos\Models\TipoCombustivel;
 use App\Modules\Abastecimentos\Models\ValorCombustivelTerceiro;
 use Illuminate\Http\Request;

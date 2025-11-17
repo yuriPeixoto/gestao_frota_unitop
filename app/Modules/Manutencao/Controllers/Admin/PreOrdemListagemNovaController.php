@@ -3,17 +3,17 @@
 namespace App\Modules\Manutencao\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\GrupoResolvedor;
 use App\Modules\Pessoal\Models\Pessoal;
-use App\Models\Telefone;
+use App\Modules\Configuracoes\Models\Telefone;
 use App\Models\OrdemServico;
 use App\Models\PreOrdemServico;
 use App\Models\PreOrdemServicoServicos;
 use App\Models\Servico;
 use App\Models\TipoStatusPreOs;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VUltimasManutencoesVeiculo;
 use App\Models\VUltimasPreventivasVeiculo;

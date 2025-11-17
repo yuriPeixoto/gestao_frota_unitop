@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Manutencao\Models\OrdemServico;
 use App\Modules\Manutencao\Models\StatusOrdemServico;
 use App\Models\TipoOrdemServico;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\VFilial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -4,7 +4,7 @@ namespace App\Modules\Checklist\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CheckList;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 
 class TipoChecklist extends Model
 {

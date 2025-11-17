@@ -8,7 +8,7 @@ use App\Modules\Tickets\Enums\TicketType;
 use App\Modules\Tickets\Models\SupportTicket;
 use App\Modules\Tickets\Models\TicketCategory;
 use App\Modules\Tickets\Models\TicketTag;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Modules\Tickets\Services\TicketService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

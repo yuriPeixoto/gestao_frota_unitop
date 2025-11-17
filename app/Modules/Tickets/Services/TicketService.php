@@ -9,7 +9,7 @@ use App\Modules\Tickets\Models\SupportTicket;
 use App\Modules\Tickets\Models\TicketAssignment;
 use App\Modules\Tickets\Models\TicketResponse;
 use App\Modules\Tickets\Models\TicketStatusHistory;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 

@@ -3,15 +3,15 @@
 namespace App\Modules\Manutencao\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\GrupoResolvedor;
 use App\Models\Motorista;
 use App\Models\PreOrdemServico;
 use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\PreOrdemServicoServicos;
 use App\Models\TipoStatusPreOs;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Modules\Veiculos\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;

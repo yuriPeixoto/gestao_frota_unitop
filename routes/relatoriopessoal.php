@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\ProdutosImobilizadosController;
 use App\Http\Controllers\Admin\RelatorioContratoFornecedores;
 use App\Http\Controllers\Admin\RelatorioServicosFornecedores;
 use App\Http\Controllers\Admin\ServicoController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'relatorioservicosfornecedores'], function () {

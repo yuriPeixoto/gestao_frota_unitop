@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Modules\Compras\Models\SolicitacaoCompra;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

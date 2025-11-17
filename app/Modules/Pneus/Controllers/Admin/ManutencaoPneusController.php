@@ -3,7 +3,7 @@
 namespace App\Modules\Pneus\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Compras\Models\Fornecedor;
 use App\Models\HistoricoPneu;
 use App\Modules\Manutencao\Models\Manutencao;
@@ -660,7 +660,7 @@ class ManutencaoPneusController extends Controller
             ]);
 
             // Busca todos os superusers
-            $superusers = \App\Models\User::where('is_superuser', true)->get();
+            $superusers = \App\Modules\Configuracoes\Models\User::where('is_superuser', true)->get();
 
             $superuserAutorizado = null;
 

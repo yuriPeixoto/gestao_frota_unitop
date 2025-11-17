@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CategoriaPlanejamentoManutencao;
 use App\Models\Manutencao;
 use App\Models\PlanejamentoManutencao;
-use App\Models\TipoCategoria;
+use App\Modules\Configuracoes\Models\TipoCategoria;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;

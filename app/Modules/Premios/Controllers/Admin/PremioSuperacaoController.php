@@ -4,7 +4,7 @@ namespace App\Modules\Premios\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PremioSuperacao;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

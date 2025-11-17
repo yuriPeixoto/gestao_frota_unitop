@@ -3,7 +3,7 @@
 namespace App\Traits;
 
 use App\Models\ActivityLog;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;

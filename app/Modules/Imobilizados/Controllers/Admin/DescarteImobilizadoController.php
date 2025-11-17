@@ -5,9 +5,9 @@ namespace App\Modules\Imobilizados\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Modules\Imobilizados\Models\DescarteImobilizado;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Imobilizados\Models\ProdutosImobilizados;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ExportableTrait;

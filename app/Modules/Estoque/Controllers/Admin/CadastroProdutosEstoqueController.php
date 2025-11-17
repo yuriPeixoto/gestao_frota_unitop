@@ -4,7 +4,7 @@ namespace App\Modules\Estoque\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Estoque\Models\Estoque;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Manutencao\Models\GrupoServico;
 use App\Models\ModeloPneu;
 use App\Models\ModeloVeiculo;
@@ -14,7 +14,7 @@ use App\Modules\Manutencao\Models\SubgrupoServico;
 use App\Modules\Imobilizados\Models\TipoImobilizado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\UnidadeProduto;
+use App\Modules\Configuracoes\Models\UnidadeProduto;
 use Illuminate\Http\Request;
 use App\Models\ProdutosPorFilial;
 use Illuminate\Support\Facades\Log;
