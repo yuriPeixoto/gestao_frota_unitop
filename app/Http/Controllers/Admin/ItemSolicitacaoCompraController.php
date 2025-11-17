@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ItemSolicitacaoCompra;
 use App\Models\SolicitacaoCompra;
 use App\Models\Produto;
-use App\Models\Servico;
+use App\Modules\Manutencao\Models\Servico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

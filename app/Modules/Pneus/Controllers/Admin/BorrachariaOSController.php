@@ -3,8 +3,8 @@
 namespace App\Modules\Pneus\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\OrdemServico;
-use App\Models\StatusOrdemServico;
+use App\Modules\Manutencao\Models\OrdemServico;
+use App\Modules\Manutencao\Models\StatusOrdemServico;
 use App\Models\TipoOrdemServico;
 use App\Models\User;
 use App\Models\VFilial;

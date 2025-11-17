@@ -5,7 +5,7 @@ namespace App\Modules\Imobilizados\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Departamento;
 use App\Models\Filial;
-use App\Models\OrdemServicoPecas;
+use App\Modules\Manutencao\Models\OrdemServicoPecas;
 use App\Models\Pessoal;
 use App\Models\Produto;
 use App\Modules\Imobilizados\Models\ProdutosImobilizados;

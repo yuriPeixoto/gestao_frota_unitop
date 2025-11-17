@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ServicoFornecedor;
+use App\Modules\Manutencao\Models\ServicoFornecedor;
 use App\Models\Fornecedor;
-use App\Models\Servico;
+use App\Modules\Manutencao\Models\Servico;
 use App\Helpers\TDate;
 use App\Services\jasperserverintegration;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;

@@ -5,7 +5,7 @@ namespace App\Modules\Estoque\Controllers\Relatorios;
 use App\Http\Controllers\Controller;
 use App\Modules\Estoque\Models\Estoque;
 use App\Models\Filial;
-use App\Models\GrupoServico;
+use App\Modules\Manutencao\Models\GrupoServico;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

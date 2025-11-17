@@ -5,7 +5,7 @@ namespace App\Modules\Pneus\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\HistoricoPneu;
 use App\Models\ManutencaoPneusEntradaItens;
-use App\Models\OrdemServico;
+use App\Modules\Manutencao\Models\OrdemServico;
 use App\Models\Pneu;
 use App\Models\PneusAplicados;
 use App\Models\RequisicaoPneu;

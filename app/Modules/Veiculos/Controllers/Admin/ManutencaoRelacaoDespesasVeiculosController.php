@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Departamento;
 use App\Models\DespesasVeiculos;
 use App\Models\Fornecedor;
-use App\Models\Servico;
+use App\Modules\Manutencao\Models\Servico;
 use App\Models\TipoDespesas;
 use App\Models\Veiculo;
 use App\Models\Filial;

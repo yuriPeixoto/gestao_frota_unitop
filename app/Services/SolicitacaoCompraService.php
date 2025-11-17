@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\SolicitacaoCompra;
 use App\Models\ItemSolicitacaoCompra;
 use App\Models\Produto;
-use App\Models\Servico;
+use App\Modules\Manutencao\Models\Servico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

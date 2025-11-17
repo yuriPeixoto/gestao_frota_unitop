@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fornecedor;
-use App\Models\NfCompraServico;
-use App\Models\OrdemServico;
-use App\Models\OrdemServicoPecas;
-use App\Models\OrdemServicoServicos;
+use App\Modules\Manutencao\Models\NfCompraServico;
+use App\Modules\Manutencao\Models\OrdemServico;
+use App\Modules\Manutencao\Models\OrdemServicoPecas;
+use App\Modules\Manutencao\Models\OrdemServicoServicos;
 use App\Models\PedidoCompra;
 use App\Models\PedidosOrdemAux;
 use App\Models\VPedidosServicosNota;
