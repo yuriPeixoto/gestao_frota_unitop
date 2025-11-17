@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 
 class AprovacaoService
 {

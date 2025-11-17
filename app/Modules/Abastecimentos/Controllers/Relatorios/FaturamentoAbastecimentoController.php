@@ -4,7 +4,7 @@ namespace App\Modules\Abastecimentos\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Abastecimentos\Models\AbastecimentoManual;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;
 use App\Traits\JasperServerIntegration;

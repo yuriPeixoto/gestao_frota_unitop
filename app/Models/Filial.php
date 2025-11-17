@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TipoFornecedor;
+use App\Modules\Compras\Models\TipoFornecedor;
 use App\Models\Estado;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

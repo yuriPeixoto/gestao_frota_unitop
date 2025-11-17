@@ -5,7 +5,7 @@ namespace App\Modules\Imobilizados\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Imobilizados\Models\ManutencaoImobilizado;
 use App\Modules\Imobilizados\Models\ManutencaoImobilizadoItens;
 use App\Modules\Imobilizados\Models\OrdemServicoPecasImobilizados;

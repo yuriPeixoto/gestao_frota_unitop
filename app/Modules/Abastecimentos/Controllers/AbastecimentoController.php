@@ -8,7 +8,7 @@ use App\Modules\Abastecimentos\Models\Bomba;
 use App\Modules\Sinistros\Models\DadosPessoalSinistro;
 use App\Models\Departamento;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Sinistros\Models\FotosDocumentosSinistros;
 use App\Modules\Sinistros\Models\HistoricoEventosSinistro;
 use App\Models\Pessoal;

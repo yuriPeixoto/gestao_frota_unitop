@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Municipio;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use app\Models\Pessoal;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

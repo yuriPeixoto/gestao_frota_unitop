@@ -4,9 +4,9 @@ namespace App\Modules\Imobilizados\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Imobilizados\Models\CadastroImobilizado;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\Produto;
-use App\Models\RegistroCompraVenda;
+use App\Modules\Compras\Models\RegistroCompraVenda;
 use App\Modules\Imobilizados\Models\StatusCadastroImobilizado;
 use App\Modules\Imobilizados\Models\TipoImobilizado;
 use App\Models\Veiculo;

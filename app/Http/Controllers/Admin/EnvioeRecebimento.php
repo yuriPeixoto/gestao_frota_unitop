@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\ManutencaoPneus;
 use App\Models\ManutencaoPneusEntrada;
 use App\Models\Pneu;

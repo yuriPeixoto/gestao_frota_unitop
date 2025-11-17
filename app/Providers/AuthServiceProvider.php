@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Models\Contrato;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Contrato;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NotaFiscal;
-use App\Models\Orcamento;
-use App\Models\PedidoCompra;
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\Orcamento;
+use App\Modules\Compras\Models\PedidoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 use App\Policies\ContratoPolicy;
 use App\Policies\FornecedorPolicy;
 use App\Policies\NotaFiscalPolicy;

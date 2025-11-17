@@ -9,7 +9,7 @@ use App\Models\Filial;
 use App\Models\Departamento;
 use App\Models\TelefoneTransferencia;
 use App\Modules\Imobilizados\Models\DevolucaoImobilizadoVeiculo;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Sinistros\Models\HistoricoEventosSinistro;
 use App\Modules\Imobilizados\Models\LogsDevolucaoImobilizadoVeiculo;
 use App\Models\Veiculo;

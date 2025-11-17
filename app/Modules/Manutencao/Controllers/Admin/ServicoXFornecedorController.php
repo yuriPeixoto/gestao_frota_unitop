@@ -3,7 +3,7 @@
 namespace App\Modules\Manutencao\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\Servico;
 use App\Models\ServicoXFornecedor;
 use Exception;

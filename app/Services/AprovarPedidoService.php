@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\Cotacoes;
-use App\Models\CotacoesItens;
+use App\Modules\Compras\Models\Cotacoes;
+use App\Modules\Compras\Models\CotacoesItens;
 use App\Models\Departamento;
 use App\Models\Filial;
-use App\Models\ItemSolicitacaoCompra;
-use App\Models\PedidoCompra;
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\ItemSolicitacaoCompra;
+use App\Modules\Compras\Models\PedidoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 use App\Models\User;
 use App\Models\VcotacoesMenosValor;
 use Illuminate\Http\Request;

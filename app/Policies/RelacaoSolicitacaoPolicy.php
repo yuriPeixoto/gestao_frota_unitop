@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\RelacaoSolicitacaoPeca;
+use App\Modules\Compras\Models\RelacaoSolicitacaoPeca;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

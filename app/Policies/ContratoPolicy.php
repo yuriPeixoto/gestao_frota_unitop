@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Contrato;
+use App\Modules\Compras\Models\Contrato;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

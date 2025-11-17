@@ -3,7 +3,7 @@
 namespace App\Modules\Pneus\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NotaFiscalEntrada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

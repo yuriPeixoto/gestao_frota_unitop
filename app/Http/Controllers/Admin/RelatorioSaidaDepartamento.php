@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Departamento;
 use App\Models\Filial;
-use App\Models\RelacaoSolicitacaoPeca;
+use App\Modules\Compras\Models\RelacaoSolicitacaoPeca;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;

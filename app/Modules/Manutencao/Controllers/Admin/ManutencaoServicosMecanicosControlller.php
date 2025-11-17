@@ -2,8 +2,8 @@
 
 namespace App\Modules\Manutencao\Controllers\Admin;
 
-use App\Models\Fornecedor;
-use App\Models\FornecedorXMecanico;
+use App\Modules\Compras\Models\Fornecedor;
+use App\Modules\Compras\Models\FornecedorXMecanico;
 use App\Models\OrdemServico;
 use App\Models\OrdemServicoServicos;
 use App\Models\ServicosMecanico;

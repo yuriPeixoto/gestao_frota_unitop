@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\PedidoCompra;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

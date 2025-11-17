@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Estado extends Model

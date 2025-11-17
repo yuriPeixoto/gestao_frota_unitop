@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Manutencao\Models\NfOrdemServico;
 use App\Modules\Manutencao\Models\OrdemServico;
 use Illuminate\Support\Facades\Log; // Se quiser logar exceções

@@ -3,7 +3,7 @@
 namespace App\Modules\Pneus\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\ModeloPneu;
 use App\Models\Pneu;
 use App\Models\RequisicaoPneu;

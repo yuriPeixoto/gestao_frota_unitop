@@ -2,7 +2,7 @@
 
 namespace App\Modules\Manutencao\Controllers\Admin;
 
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NotaFiscalServico;
 use App\Models\NotaFiscalServicoItens;
 use App\Models\Servico;

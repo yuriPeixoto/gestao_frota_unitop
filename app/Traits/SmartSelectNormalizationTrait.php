@@ -3,7 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Departamento;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\Motorista;
 use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VFilial;

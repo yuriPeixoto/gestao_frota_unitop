@@ -5,7 +5,7 @@ namespace App\Modules\Abastecimentos\Controllers\Relatorios;
 use App\Http\Controllers\Controller;
 use App\Modules\Abastecimentos\Models\AbastecimentoIntegracao;
 use App\Modules\Abastecimentos\Models\Bomba;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Abastecimentos\Models\VAbastecimento;
 use App\Models\Veiculo;
 use Dompdf\Dompdf;

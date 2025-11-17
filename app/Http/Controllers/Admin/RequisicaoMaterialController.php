@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\RelacaoSolicitacaoPeca;
+use App\Modules\Compras\Models\RelacaoSolicitacaoPeca;
 use App\Models\Departamento;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\RequisicaoMateriaisItens;
 use App\Models\User;
 use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\Produto;
 use App\Models\ProdutosPorFilial;
-use App\Models\ProdutosSolicitacoes;
+use App\Modules\Compras\Models\ProdutosSolicitacoes;
 use App\Models\RequisicaoMateriais;
 use App\Models\UnidadeProduto;
 use App\Modules\Estoque\Models\TransferenciaEstoque;

@@ -3,7 +3,7 @@
 namespace App\Modules\Estoque\Controllers\Admin;
 
 use App\Modules\Estoque\Models\HistoricoMovimentacaoEstoque;
-use App\Models\RelacaoSolicitacaoPeca;
+use App\Modules\Compras\Models\RelacaoSolicitacaoPeca;
 use App\Modules\Estoque\Models\TransferenciaDiretaEstoqueAux;
 use App\Models\TransferenciaPneuItens;
 

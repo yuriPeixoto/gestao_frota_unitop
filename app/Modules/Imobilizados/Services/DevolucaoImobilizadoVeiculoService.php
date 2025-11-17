@@ -6,7 +6,7 @@ use App\Models\Departamento;
 use App\Services\IntegracaoWhatssappCarvalimaService;
 use App\Models\DepartamentoTransferencia;
 use App\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\TelefoneTransferencia;
 use App\Models\TipoEquipamento;
 use App\Modules\Imobilizados\Models\DevolucaoImobilizadoVeiculo;
