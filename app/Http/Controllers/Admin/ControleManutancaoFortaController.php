@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\DB;
 use App\Traits\ExportableTrait;
 use App\Http\Controllers\Controller;
 use App\Models\Filial;
-use App\Models\ModeloVeiculo;
+use App\Modules\Veiculos\Models\ModeloVeiculo;
 use App\Models\OrdemServico;
 use App\Models\StatusOrdemServico;
 use App\Models\TipoOrdemServico;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 
 class ControleManutancaoFortaController extends Controller
 {

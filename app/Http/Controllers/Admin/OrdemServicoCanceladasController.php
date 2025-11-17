@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Models\OrdemServico;
 use App\Models\TipoOrdemServico;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VFilial;
 use App\Models\StatusOrdemServico;
 use App\Models\User;

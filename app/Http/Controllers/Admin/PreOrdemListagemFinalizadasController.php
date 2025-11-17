@@ -12,7 +12,7 @@ use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\PreOrdemServicoServicos;
 use App\Models\TipoStatusPreOs;
 use App\Models\User;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

@@ -7,7 +7,7 @@ use App\Models\GerarOrdemServicoAuxiliar;
 use App\Models\Fornecedor;
 use App\Models\VFilial;
 use App\Models\Departamento;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\Manutencao;
 use App\Models\Servico;
 use App\Models\User;

@@ -9,7 +9,7 @@ use App\Models\Fornecedor;
 use App\Models\NfOrdemServico;
 use App\Models\OrdemServico;
 use App\Modules\Abastecimentos\Models\Tanque;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;

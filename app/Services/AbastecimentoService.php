@@ -8,7 +8,7 @@ use App\Models\Departamento;
 use App\Models\Fornecedor;
 use App\Models\Motorista;
 use App\Modules\Abastecimentos\Models\TipoCombustivel;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VFilial;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

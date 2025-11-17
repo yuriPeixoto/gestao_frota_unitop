@@ -14,7 +14,7 @@ use App\Models\PreOrdemServicoServicos;
 use App\Models\Servico;
 use App\Models\TipoStatusPreOs;
 use App\Models\User;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VUltimasManutencoesVeiculo;
 use App\Models\VUltimasPreventivasVeiculo;
 use App\Models\VManutencaoVencida;

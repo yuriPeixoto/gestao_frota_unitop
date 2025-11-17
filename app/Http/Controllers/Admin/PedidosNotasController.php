@@ -11,7 +11,7 @@ use App\Models\OrdemServico;
 use App\Models\OrdemServicoPecas;
 use App\Models\OrdemServicoServicos;
 use App\Models\PedidoCompra;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VListarPedidosNf;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;

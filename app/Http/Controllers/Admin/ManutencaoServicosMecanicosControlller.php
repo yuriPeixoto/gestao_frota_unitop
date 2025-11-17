@@ -7,7 +7,7 @@ use App\Models\FornecedorXMecanico;
 use App\Models\OrdemServico;
 use App\Models\OrdemServicoServicos;
 use App\Models\ServicosMecanico;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
