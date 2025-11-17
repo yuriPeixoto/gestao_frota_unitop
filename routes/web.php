@@ -362,7 +362,8 @@ Route::group([
     require __DIR__ . '/modules/pessoal.php';
     // Rotas de Contratos de Fornecedores (temporariamente no pessoal.php original, mover para módulo de Compras)
     require __DIR__ . '/pessoal.php';
-    require __DIR__ . '/pneus.php';
+    // Módulo de Pneus (estrutura modular)
+    require __DIR__ . '/modules/pneus.php';
     require __DIR__ . '/relacaodespesasveiculos.php';
     require __DIR__ . '/manutencaoservicos.php';
     require __DIR__ . '/listagemoslacamentoservico.php';
@@ -378,7 +379,7 @@ Route::group([
     require __DIR__ . '/modules/imobilizados.php';
     require __DIR__ . '/relatoriosmanutencao.php';
     require __DIR__ . '/relatorios.php';
-    require __DIR__ . '/relatoriospneus.php';
+    // Relatórios de Pneus movidos para o módulo modular
     require __DIR__ . '/relatoriopessoal.php';
     require __DIR__ . '/relatorioveiculo.php';
     // Relatórios de Estoque movidos para o módulo modular

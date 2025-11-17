@@ -3,7 +3,7 @@
  * NOTA: Este arquivo contém rotas mistas que serão movidas gradualmente:
  * - Relatórios Gerenciais: Movidos para app/Modules/RelatoriosGerenciais
  * - Relatórios de Abastecimentos: Já movidos para app/Modules/Abastecimentos
- * - Relatórios de Pneus: Serão movidos para app/Modules/Pneus (pendente)
+ * - Relatórios de Pneus: Já movidos para app/Modules/Pneus
  * - Relatórios de Manutenção: Serão movidos para app/Modules/Manutencao (pendente)
  * - FornecedorController: Será movido para app/Modules/Compras (pendente)
  */
@@ -11,7 +11,6 @@
 use App\Http\Controllers\Admin\FornecedorController;
 use App\Modules\Abastecimentos\Controllers\Relatorios\RelatorioAbastecimentoTotais;
 use App\Http\Controllers\Admin\RelatorioDuracaoManutencoesOS;
-use App\Http\Controllers\Admin\RelatorioInventarioPneus;
 use App\Http\Controllers\Admin\RelatorioNfsManutencaoRealizadas;
 use App\Modules\Abastecimentos\Controllers\Relatorios\RelatorioRecebimentoCombustivel;
 use Illuminate\Support\Facades\Route;
@@ -51,9 +50,4 @@ Route::group(['prefix' => 'relatorioabastecimentototais'], function () {
     Route::post('/gerarexcel', [RelatorioAbastecimentoTotais::class, 'gerarExcel'])->name('relatorioabastecimentototais.gerarexcel');
 });
 
-// Relatórios de Pneus (serão movidos para o módulo)
-Route::group(['prefix' => 'relatorioinventariopneus'], function () {
-    Route::get('/', [RelatorioInventarioPneus::class, 'index'])->name('relatorioinventariopneus.index');
-    Route::post('/gerarpdf', [RelatorioInventarioPneus::class, 'gerarPdf'])->name('relatorioinventariopneus.gerarpdf');
-    Route::post('/gerarexcel', [RelatorioInventarioPneus::class, 'gerarExcel'])->name('relatorioinventariopneus.gerarexcel');
-});
+// Relatórios de Pneus (movidos para app/Modules/Pneus)
