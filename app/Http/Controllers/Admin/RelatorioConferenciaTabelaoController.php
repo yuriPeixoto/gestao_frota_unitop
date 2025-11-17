@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CalcularPremioMensaleRV;
 use Illuminate\Http\Request;
 use App\Models\Motorista;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
 

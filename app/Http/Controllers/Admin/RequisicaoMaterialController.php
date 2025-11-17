@@ -9,7 +9,7 @@ use App\Models\Filial;
 use App\Models\Fornecedor;
 use App\Models\RequisicaoMateriaisItens;
 use App\Models\User;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\Produto;
 use App\Models\ProdutosPorFilial;
 use App\Models\ProdutosSolicitacoes;

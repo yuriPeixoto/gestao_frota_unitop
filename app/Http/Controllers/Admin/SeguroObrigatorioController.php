@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SeguroObrigatorio;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VFilial;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;

@@ -5,7 +5,7 @@ namespace App\Traits;
 use App\Models\Departamento;
 use App\Models\Fornecedor;
 use App\Models\Motorista;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VFilial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

@@ -30,7 +30,7 @@ use App\Models\SocorroOrdemServico;
 use App\Models\PreOrdemServico;
 use App\Models\ServicoFornecedor;
 use App\Models\User;
-use App\Models\Veiculo;
+use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VFilial;
 use App\Models\ProdutosPorFilial;
 use App\Models\PlanejamentoManutencao;

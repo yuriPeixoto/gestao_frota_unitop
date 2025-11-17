@@ -11,7 +11,7 @@ use App\Models\Filial;
 use App\Models\Fornecedor;
 use App\Models\FornecedorXMecanico;
 use App\Models\GrupoServico;
-use App\Models\ModeloVeiculo;
+use App\Modules\Veiculos\Models\ModeloVeiculo;
 use App\Models\Municipio;
 use App\Models\PecasFornecedor;
 use App\Models\Produto;

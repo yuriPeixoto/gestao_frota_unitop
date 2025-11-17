@@ -334,7 +334,6 @@ Route::group([
 
     // Módulo de Abastecimentos (estrutura modular)
     require __DIR__ . '/modules/abastecimentos.php';
-    require __DIR__ . '/atrelamentoveiculos.php';
     // Módulo de Certificados e Vencimentário (estrutura modular)
     require __DIR__ . '/modules/certificados.php';
     require __DIR__ . '/compras.php';
@@ -345,9 +344,7 @@ Route::group([
     // require __DIR__ . '/devolucaosaidaestoque.php';
     // Módulo de Estoque (estrutura modular)
     require __DIR__ . '/modules/estoque.php';
-    require __DIR__ . '/ipvaveiculo.php';
     require __DIR__ . '/lancIpvalicenciamentoseguro.php';
-    require __DIR__ . '/licenciamentoveiculo.php';
     require __DIR__ . '/listagemoslacamentoservico.php';
     require __DIR__ . '/listagemoslacamentoservicorateio.php';
     require __DIR__ . '/manutencao.php';
@@ -364,7 +361,6 @@ Route::group([
     require __DIR__ . '/pessoal.php';
     // Módulo de Pneus (estrutura modular)
     require __DIR__ . '/modules/pneus.php';
-    require __DIR__ . '/relacaodespesasveiculos.php';
     require __DIR__ . '/manutencaoservicos.php';
     require __DIR__ . '/listagemoslacamentoservico.php';
     require __DIR__ . '/listagemoslacamentoservicorateio.php';
@@ -373,7 +369,8 @@ Route::group([
     require __DIR__ . '/servicofornecedor.php';
     // Módulo de Sinistros (estrutura modular)
     require __DIR__ . '/modules/sinistros.php';
-    require __DIR__ . '/veiculos.php';
+    // Módulo de Veículos (estrutura modular)
+    require __DIR__ . '/modules/veiculos.php';
     require __DIR__ . '/anexos.php';
     // Módulo de Imobilizados (estrutura modular)
     require __DIR__ . '/modules/imobilizados.php';
@@ -381,7 +378,7 @@ Route::group([
     require __DIR__ . '/relatorios.php';
     // Relatórios de Pneus movidos para o módulo modular
     require __DIR__ . '/relatoriopessoal.php';
-    require __DIR__ . '/relatorioveiculo.php';
+    // Relatórios de Veículos movidos para o módulo modular
     // Relatórios de Estoque movidos para o módulo modular
     require __DIR__ . '/relatoriocompras.php';
     // Relatórios de Sinistros movidos para o módulo modular
