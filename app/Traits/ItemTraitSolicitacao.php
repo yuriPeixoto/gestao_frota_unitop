@@ -3,7 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Produto;
-use App\Models\Servico;
+use App\Modules\Manutencao\Models\Servico;
 use App\Models\UnidadeProduto;
 
 trait ItemTraitSolicitacao

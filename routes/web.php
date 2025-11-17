@@ -345,14 +345,8 @@ Route::group([
     // Módulo de Estoque (estrutura modular)
     require __DIR__ . '/modules/estoque.php';
     require __DIR__ . '/lancIpvalicenciamentoseguro.php';
-    require __DIR__ . '/listagemoslacamentoservico.php';
-    require __DIR__ . '/listagemoslacamentoservicorateio.php';
-    require __DIR__ . '/manutencao.php';
-    require __DIR__ . '/manutencaocategoria.php';
-    // Relatórios de Abastecimentos movidos para o módulo modular
-    require __DIR__ . '/manutencaopreordemservicofinalizada.php';
-    require __DIR__ . '/manutencaoservico.php';
-    require __DIR__ . '/manutencaoservicos.php';
+    // Módulo de Manutenção (estrutura modular)
+    require __DIR__ . '/modules/manutencao.php';
     // Módulo de Multas (estrutura modular)
     require __DIR__ . '/modules/multas.php';
     // Módulo de Pessoal (estrutura modular)
@@ -361,12 +355,7 @@ Route::group([
     require __DIR__ . '/pessoal.php';
     // Módulo de Pneus (estrutura modular)
     require __DIR__ . '/modules/pneus.php';
-    require __DIR__ . '/manutencaoservicos.php';
-    require __DIR__ . '/listagemoslacamentoservico.php';
-    require __DIR__ . '/listagemoslacamentoservicorateio.php';
-    require __DIR__ . '/statusordemservico.php';
     require __DIR__ . '/seguroobrigatorio.php';
-    require __DIR__ . '/servicofornecedor.php';
     // Módulo de Sinistros (estrutura modular)
     require __DIR__ . '/modules/sinistros.php';
     // Módulo de Veículos (estrutura modular)
@@ -374,7 +363,6 @@ Route::group([
     require __DIR__ . '/anexos.php';
     // Módulo de Imobilizados (estrutura modular)
     require __DIR__ . '/modules/imobilizados.php';
-    require __DIR__ . '/relatoriosmanutencao.php';
     require __DIR__ . '/relatorios.php';
     // Relatórios de Pneus movidos para o módulo modular
     require __DIR__ . '/relatoriopessoal.php';

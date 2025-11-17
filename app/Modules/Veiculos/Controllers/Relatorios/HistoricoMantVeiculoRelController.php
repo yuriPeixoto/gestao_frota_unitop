@@ -3,7 +3,7 @@
 namespace App\Modules\Veiculos\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\OrdemServico;
+use App\Modules\Manutencao\Models\OrdemServico;
 use App\Models\Veiculo;
 use App\Models\Filial;
 use Illuminate\Http\Request;

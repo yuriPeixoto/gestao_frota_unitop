@@ -11,8 +11,8 @@ use App\Traits\ExportableTrait;
 use App\Http\Controllers\Controller;
 use App\Models\Filial;
 use App\Modules\Veiculos\Models\ModeloVeiculo;
-use App\Models\OrdemServico;
-use App\Models\StatusOrdemServico;
+use App\Modules\Manutencao\Models\OrdemServico;
+use App\Modules\Manutencao\Models\StatusOrdemServico;
 use App\Models\TipoOrdemServico;
 use App\Modules\Veiculos\Models\Veiculo;
 

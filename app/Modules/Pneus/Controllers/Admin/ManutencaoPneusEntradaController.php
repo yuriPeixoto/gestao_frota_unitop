@@ -17,7 +17,7 @@ use App\Models\NotaFiscalEntrada;
 use App\Models\PedidoCompra;
 use App\Models\PedidosOrdemAux;
 use App\Models\Pneu;
-use App\Models\Servico;
+use App\Modules\Manutencao\Models\Servico;
 use App\Models\SolicitacaoCompra;
 use App\Models\TipoBorrachaPneu;
 use App\Models\TipoDesenhoPneu;
