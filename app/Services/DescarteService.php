@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\DescartePneu;
-use App\Models\HistoricoPneu;
+use App\Modules\Pneus\Models\HistoricoPneu;
 use App\Models\Pneu;
 use App\Models\TipoDescarte;
 use Exception;
