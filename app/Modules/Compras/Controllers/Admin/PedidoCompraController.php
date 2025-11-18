@@ -3,10 +3,10 @@
 namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\ItemSolicitacaoCompra;
 use App\Models\ItensPedidos;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\PedidoCompra;
 use App\Models\SituacaoPedido;
 use App\Modules\Configuracoes\Models\User;
 use App\Models\VFilial;

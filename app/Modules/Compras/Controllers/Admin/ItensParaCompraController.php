@@ -4,7 +4,7 @@ namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Helpers\PhoneHelper;
 use App\Http\Controllers\Controller;
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 use App\Models\ItemSolicitacaoCompra;
 use App\Models\ItemCompra;
 use App\Models\VFilial;

@@ -4,10 +4,10 @@ namespace App\Modules\Configuracoes\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Address;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\Role;
 use App\Modules\Pessoal\Models\TipoPessoal;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\VFilial;
 use App\Models\Telefone;
 use Illuminate\Database\Eloquent\Model;

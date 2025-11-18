@@ -5,7 +5,7 @@ namespace App\Modules\Compras\Controllers\Relatorios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Modules\Manutencao\Models\ServicoFornecedor;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Manutencao\Models\Servico;
 use App\Helpers\TDate;
 use App\Services\jasperserverintegration;

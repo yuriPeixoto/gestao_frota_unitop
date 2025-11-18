@@ -4,13 +4,13 @@ namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Configuracoes\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Manutencao\Models\NfOrdemServico;
 use App\Models\NotaFiscalAvulsa;
 use App\Modules\Manutencao\Models\OrdemServico;
 use App\Modules\Manutencao\Models\OrdemServicoPecas;
 use App\Modules\Manutencao\Models\OrdemServicoServicos;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\PedidoCompra;
 use App\Modules\Veiculos\Models\Veiculo;
 use App\Models\VListarPedidosNf;
 use Barryvdh\DomPDF\Facade\Pdf;

@@ -3,9 +3,9 @@
 namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NotaFiscalAvulsa;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\PedidoCompra;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

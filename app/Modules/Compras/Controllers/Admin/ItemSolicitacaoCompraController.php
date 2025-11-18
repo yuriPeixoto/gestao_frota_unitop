@@ -4,7 +4,7 @@ namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ItemSolicitacaoCompra;
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 use App\Models\Produto;
 use App\Modules\Manutencao\Models\Servico;
 use Illuminate\Http\Request;

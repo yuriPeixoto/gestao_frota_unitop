@@ -4,10 +4,10 @@ namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\IndexOrcamentoRequest;
-use App\Models\Fornecedor;
-use App\Models\Orcamento;
-use App\Models\ItemOrcamento;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\Fornecedor;
+use App\Modules\Compras\Models\Orcamento;
+use App\Modules\Compras\Models\ItemOrcamento;
+use App\Modules\Compras\Models\PedidoCompra;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

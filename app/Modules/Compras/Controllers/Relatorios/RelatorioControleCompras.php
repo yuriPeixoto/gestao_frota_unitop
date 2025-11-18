@@ -5,7 +5,7 @@ namespace App\Modules\Compras\Controllers\Relatorios;
 use App\Http\Controllers\Controller;
 use App\Modules\Configuracoes\Models\Departamento;
 use App\Modules\Configuracoes\Models\Filial;
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
