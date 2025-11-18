@@ -7,7 +7,7 @@ use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use App\Modules\Configuracoes\Models\User;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 
 class UserSeed extends Seeder
 {

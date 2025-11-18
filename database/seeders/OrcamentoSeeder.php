@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Fornecedor;
-use App\Models\ItemOrcamento;
-use App\Models\Orcamento;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\Fornecedor;
+use App\Modules\Compras\Models\ItemOrcamento;
+use App\Modules\Compras\Models\Orcamento;
+use App\Modules\Compras\Models\PedidoCompra;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

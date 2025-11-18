@@ -3,7 +3,7 @@
 namespace App\Modules\Configuracoes\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
+use App\Modules\Configuracoes\Models\Branch;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

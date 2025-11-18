@@ -3,7 +3,7 @@
 namespace App\Modules\Configuracoes\Controllers\Admin;
 
 use App\Models\ActivityLog;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

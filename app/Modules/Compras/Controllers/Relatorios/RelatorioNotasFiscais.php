@@ -4,7 +4,7 @@ namespace App\Modules\Compras\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Configuracoes\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NotaFiscalEntrada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

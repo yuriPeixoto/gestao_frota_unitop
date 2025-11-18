@@ -8,7 +8,7 @@ use App\Models\ContratoModelo;
 use App\Models\Endereco;
 use App\Models\Estado;
 use App\Modules\Configuracoes\Models\Filial;
-use App\Models\Fornecedor;
+use App\Modules\Compras\Models\Fornecedor;
 use App\Models\FornecedorXMecanico;
 use App\Modules\Manutencao\Models\GrupoServico;
 use App\Modules\Veiculos\Models\ModeloVeiculo;

@@ -34,10 +34,10 @@ class CheckCompraApprovalLevel
         try {
             // Determina qual modelo buscar com base no tipo
             if ($modelType === 'pedido') {
-                $pedido = \App\Models\PedidoCompra::findOrFail($pedidoId);
+                $pedido = \App\Modules\Compras\Models\PedidoCompra::findOrFail($pedidoId);
                 $valor = $pedido->valor_total;
             } elseif ($modelType === 'solicitacao') {
-                $solicitacao = \App\Models\SolicitacaoCompra::findOrFail($pedidoId);
+                $solicitacao = \App\Modules\Compras\Models\SolicitacaoCompra::findOrFail($pedidoId);
                 // Para solicitação, podemos ter que calcular o valor total
                 $valor = $solicitacao->itens->sum(function ($item) {
                     return $item->quantidade * $item->valor_unitario;
@@ -122,7 +122,7 @@ class CheckCompraApprovalLevel
         }
 
         try {
-            $pedido = \App\Models\PedidoCompra::find($pedidoId);
+            $pedido = \App\Modules\Compras\Models\PedidoCompra::find($pedidoId);
             if (!$pedido) {
                 return false;
             }
@@ -134,11 +134,11 @@ class CheckCompraApprovalLevel
 
             // Se houver uma solicitação vinculada, verificar se ela é da frota
             if ($pedido->id_solicitacao) {
-                $solicitacao = \App\Models\SolicitacaoCompra::find($pedido->id_solicitacao);
+                $solicitacao = \App\Modules\Compras\Models\SolicitacaoCompra::find($pedido->id_solicitacao);
                 if ($solicitacao && $solicitacao->id_departamento) {
                     // Verificar se o departamento está relacionado à frota (exemplo)
                     // Aqui você deve ajustar conforme a estrutura do seu sistema
-                    $departamento = \App\Models\Departamento::find($solicitacao->id_departamento);
+                    $departamento = \App\Modules\Configuracoes\Models\Departamento::find($solicitacao->id_departamento);
                     if ($departamento && stripos($departamento->descricao_departamento, 'frota') !== false) {
                         $isFrota = true;
                     }

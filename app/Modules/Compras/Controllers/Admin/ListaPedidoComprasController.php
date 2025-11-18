@@ -3,10 +3,10 @@
 namespace App\Modules\Compras\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fornecedor;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\Fornecedor;
+use App\Modules\Compras\Models\PedidoCompra;
 use App\Models\SituacaoPedido;
-use App\Models\SolicitacaoCompra;
+use App\Modules\Compras\Models\SolicitacaoCompra;
 use App\Modules\Configuracoes\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;

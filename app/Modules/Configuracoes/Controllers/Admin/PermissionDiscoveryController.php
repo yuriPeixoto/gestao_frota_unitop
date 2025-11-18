@@ -5,7 +5,7 @@ namespace App\Modules\Configuracoes\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Services\PermissionDiscoveryService;
 use Illuminate\Http\Request;
 

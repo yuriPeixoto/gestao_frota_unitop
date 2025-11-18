@@ -10,7 +10,7 @@ use App\Modules\Estoque\Models\HistoricoMovimentacaoEstoque;
 use App\Models\Municipio;
 use App\Models\Estado;
 use App\Modules\Configuracoes\Models\Filial;
-use App\Models\PedidoCompra;
+use App\Modules\Compras\Models\PedidoCompra;
 use App\Models\ProdutosPorFilial;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
