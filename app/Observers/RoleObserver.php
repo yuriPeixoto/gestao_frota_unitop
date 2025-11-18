@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Role;
+use App\Modules\Configuracoes\Models\Role;
 
 class RoleObserver
 {

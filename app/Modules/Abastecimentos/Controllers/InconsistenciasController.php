@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InconsistenciaAts;
 use App\Models\InconsistenciaTruckPag;
 use App\Models\Veiculo;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\VFilial;
 use App\Modules\Abastecimentos\Models\TipoCombustivel;
 use App\Modules\Abastecimentos\Models\Bomba;

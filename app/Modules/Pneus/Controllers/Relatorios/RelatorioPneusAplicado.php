@@ -4,7 +4,7 @@ namespace App\Modules\Pneus\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\BaseVeiculo;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\PneusDeposito;
 use App\Models\Veiculo;
 use App\Models\VFilial;

@@ -8,7 +8,7 @@ use App\Models\ItemSolicitacaoCompra;
 use App\Models\ItensPedidos;
 use App\Models\PedidoCompra;
 use App\Models\SituacaoPedido;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\VFilial;
 use App\Traits\FilterTrait;
 use Illuminate\Http\Request;

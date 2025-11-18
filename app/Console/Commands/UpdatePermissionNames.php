@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Permission;
+use App\Modules\Configuracoes\Models\Permission;
 
 class UpdatePermissionNames extends Command
 {

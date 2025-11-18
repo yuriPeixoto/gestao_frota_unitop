@@ -4,7 +4,7 @@ namespace App\Modules\Pneus\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\VFilial;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\RequisicaoPneu;
 use App\Models\RequisicaoPneuModelos;
 use App\Models\RequisicaoPneuItens;

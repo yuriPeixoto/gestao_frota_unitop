@@ -3,7 +3,7 @@
 namespace App\Modules\Compras\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\SolicitacaoCompra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

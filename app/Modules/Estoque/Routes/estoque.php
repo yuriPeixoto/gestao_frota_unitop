@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\FornecedorController;
 use App\Http\Controllers\Admin\ItensParaCompraController;
 use App\Http\Controllers\Admin\ListaPedidoComprasController;
 use App\Http\Controllers\Admin\ProdutoController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RequisicaoMaterialController;
 use App\Models\Produto;
 

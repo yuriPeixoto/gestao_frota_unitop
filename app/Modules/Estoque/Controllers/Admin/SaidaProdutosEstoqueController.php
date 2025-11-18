@@ -3,7 +3,7 @@
 namespace App\Modules\Estoque\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Modules\Estoque\Models\HistoricoMovimentacaoEstoque;
 use App\Modules\Compras\Models\ItemCompra;
 use App\Modules\Manutencao\Models\OrdemServico;
@@ -14,7 +14,7 @@ use App\Models\ProdutosPorFilial;
 use App\Modules\Compras\Models\ProdutosSolicitacoes;
 use App\Modules\Compras\Models\RelacaoSolicitacaoPeca;
 use App\Modules\Estoque\Models\TransferenciaEstoqueAux;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\Veiculo;
 use App\Models\VFilial;
 use App\Models\VRequisicaoProdutoOs;

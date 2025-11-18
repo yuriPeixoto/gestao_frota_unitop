@@ -4,8 +4,8 @@ namespace App\Modules\Pneus\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\ControleVidaPneus;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Pneu;
 use App\Models\Veiculo;
 use Illuminate\Http\Request;

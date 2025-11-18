@@ -7,7 +7,7 @@ set_time_limit(120);
 use App\Http\Controllers\Controller;
 
 use App\Models\VFilial;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\Pneu;
 use App\Models\RequisicaoPneu;
 use App\Models\RequisicaoPneuItens;

@@ -7,7 +7,7 @@ use App\Models\Fornecedor;
 use App\Models\PedidoCompra;
 use App\Models\SituacaoPedido;
 use App\Models\SolicitacaoCompra;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 

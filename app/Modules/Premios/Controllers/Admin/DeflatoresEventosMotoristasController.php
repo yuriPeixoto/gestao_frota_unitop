@@ -5,7 +5,7 @@ namespace App\Modules\Premios\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Deflatores;
 use App\Models\DeflatoresEventosMotoristas;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Motorista;
 use App\Modules\Pessoal\Models\Pessoal;
 use App\Models\Veiculo;

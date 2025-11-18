@@ -3,8 +3,8 @@
 namespace App\Modules\Manutencao\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Compras\Models\Fornecedor;
 use App\Models\NfOrdemServico;
 use App\Models\OrdemServico;

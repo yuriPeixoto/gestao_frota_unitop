@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\PermissionGroup;
+use App\Modules\Configuracoes\Models\PermissionGroup;
 use Carbon\Carbon;
 
 class PermissionGroupSeeder extends Seeder

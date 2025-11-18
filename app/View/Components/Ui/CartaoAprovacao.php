@@ -4,7 +4,7 @@ namespace App\View\Components\Ui;
 
 use Illuminate\View\Component;
 use Illuminate\Support\Collection;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class CartaoAprovacao extends Component

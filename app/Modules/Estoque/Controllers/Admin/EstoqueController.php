@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Modules\Estoque\Models\Estoque;
 use App\Modules\Estoque\Models\EstoqueItem;
 use App\Modules\Estoque\Models\EstoqueMovimento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Produto;
 use App\Models\ProdutosPorFilial;
 use App\Models\VFilial;

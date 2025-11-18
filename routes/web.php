@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\SinistroController;
 use App\Http\Controllers\Admin\SubgrupoServicoController;
 use App\Http\Controllers\Admin\TelefoneController;
-use App\Http\Controllers\Admin\UnidadeProdutoController;
+use App\Modules\Configuracoes\Controllers\Admin\UnidadeProdutoController;
 use App\Http\Controllers\Auth\FilialController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
@@ -338,6 +338,9 @@ Route::group([
     require __DIR__ . '/modules/certificados.php';
     // Módulo de Compras (estrutura modular)
     require __DIR__ . '/modules/compras.php';
+    // Módulo de Configurações (estrutura modular)
+    require __DIR__ . '/modules/configuracoes.php';
+    // Configurações antigas (rotas de outros módulos que ainda precisam ser migradas)
     require __DIR__ . '/configuracoes.php';
     require __DIR__ . '/console.php';
     require __DIR__ . '/controlemanutancaofrota.php';

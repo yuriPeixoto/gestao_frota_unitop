@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use App\Models\User;
-use App\Models\Branch;
+use App\Modules\Configuracoes\Models\User;
+use App\Modules\Configuracoes\Models\Branch;
 use App\Policies\BranchPolicy;
 use App\Policies\UserPolicy;
 

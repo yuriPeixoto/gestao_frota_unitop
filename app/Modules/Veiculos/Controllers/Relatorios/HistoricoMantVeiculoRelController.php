@@ -5,7 +5,7 @@ namespace App\Modules\Veiculos\Controllers\Relatorios;
 use App\Http\Controllers\Controller;
 use App\Modules\Manutencao\Models\OrdemServico;
 use App\Models\Veiculo;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use Illuminate\Http\Request;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
 use Illuminate\Support\Facades\Log; // Se quiser logar exceções

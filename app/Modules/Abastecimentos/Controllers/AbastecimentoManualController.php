@@ -5,7 +5,7 @@ namespace App\Modules\Abastecimentos\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\Abastecimentos\Models\AbastecimentoManual;
 use App\Modules\Abastecimentos\Models\Bomba;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Modules\Compras\Models\Fornecedor;
 use App\Models\Motorista;
 use App\Modules\Abastecimentos\Models\Tanque;

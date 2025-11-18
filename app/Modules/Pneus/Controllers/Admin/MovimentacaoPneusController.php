@@ -11,7 +11,7 @@ use App\Models\PneusAplicados;
 use App\Models\RequisicaoPneu;
 use App\Models\RequisicaoPneuItens;
 use App\Models\RequisicaoPneuModelos;
-use App\Models\TipoEquipamento;
+use App\Modules\Configuracoes\Models\TipoEquipamento;
 use App\Models\Veiculo;
 use App\Models\VeiculoXPneu;
 use Illuminate\Http\Request;

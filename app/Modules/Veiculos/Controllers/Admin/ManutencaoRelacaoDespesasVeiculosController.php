@@ -3,13 +3,13 @@
 namespace App\Modules\Veiculos\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\DespesasVeiculos;
 use App\Modules\Compras\Models\Fornecedor;
 use App\Modules\Manutencao\Models\Servico;
 use App\Models\TipoDespesas;
 use App\Models\Veiculo;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;

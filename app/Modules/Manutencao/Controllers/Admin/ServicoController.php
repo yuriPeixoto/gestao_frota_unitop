@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Servico;
 use App\Models\Manutencao;
-use App\Models\TipoCategoria;
+use App\Modules\Configuracoes\Models\TipoCategoria;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 

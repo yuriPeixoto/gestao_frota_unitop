@@ -3,7 +3,7 @@
 namespace App\Modules\Pneus\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\Pneu;
 use App\Models\Veiculo;
 use App\Models\VFilial;

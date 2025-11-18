@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\RelatorioSolicitacao;
 use App\Http\Controllers\Admin\RelatorioSolicitacaoCompra;
 use App\Http\Controllers\Admin\ServicoController;
 use App\Http\Controllers\Admin\SolicitacaoCompraController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'relatoriocontrolecompras'], function () {

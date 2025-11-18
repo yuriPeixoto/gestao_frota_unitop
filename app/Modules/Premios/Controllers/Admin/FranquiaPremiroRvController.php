@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CategoriaVeiculo;
 use App\Models\FranquiaPremioRv;
 use App\Models\SubCategoriaVeiculo;
-use App\Models\TipoEquipamento;
+use App\Modules\Configuracoes\Models\TipoEquipamento;
 use App\Models\TipoOperacao;
 use Exception;
 use Illuminate\Http\Request;

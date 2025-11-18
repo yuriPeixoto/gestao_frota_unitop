@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedJwtController;
 use App\Http\Controllers\Admin\DepartamentoController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ChecklistController;
 use App\Http\Controllers\Admin\ChecklistRespostaController;
 

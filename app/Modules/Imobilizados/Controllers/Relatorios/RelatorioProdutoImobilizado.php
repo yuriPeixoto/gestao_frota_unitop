@@ -3,7 +3,7 @@
 namespace App\Modules\Imobilizados\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Produto;
 use App\Traits\JasperServerIntegration as TraitsJasperServerIntegration;
 use Illuminate\Http\Request;

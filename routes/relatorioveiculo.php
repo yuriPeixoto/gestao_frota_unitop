@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\RelatorioIpvaLicenciamentoVeiculo;
 use App\Modules\Multas\Controllers\Relatorios\RelatorioMultas;
 use App\Http\Controllers\Admin\RelatorioTransferenciaVeiculo;
 use App\Http\Controllers\Admin\RelatorioVeiculos;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VeiculoController;
 use Illuminate\Support\Facades\Route;
 

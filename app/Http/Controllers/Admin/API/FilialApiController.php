@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
+use App\Modules\Configuracoes\Models\Departamento;
 use App\Models\VFilial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;

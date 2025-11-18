@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\MetaPorTipoEquipamento;
-use App\Models\TipoEquipamento;
+use App\Modules\Configuracoes\Models\TipoEquipamento;
 use App\Models\VFilial;
 use App\Traits\ExportableTrait;
 use Carbon\Carbon;

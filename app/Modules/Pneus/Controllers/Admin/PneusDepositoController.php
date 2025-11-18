@@ -3,8 +3,8 @@
 namespace App\Modules\Pneus\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\HistoricoPneu;
 use App\Models\Pneu;
 use App\Models\PneusDeposito;

@@ -4,7 +4,7 @@ namespace App\Modules\Premios\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Deflatores;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

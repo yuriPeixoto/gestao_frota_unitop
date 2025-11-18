@@ -3,7 +3,7 @@
 namespace App\Modules\Premios\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Motorista;
 use App\Models\SubCategoriaVeiculo;
 use App\Models\Veiculo;

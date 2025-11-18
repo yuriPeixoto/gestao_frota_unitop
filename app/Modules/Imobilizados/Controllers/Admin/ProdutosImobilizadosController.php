@@ -3,14 +3,14 @@
 namespace App\Modules\Imobilizados\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\Pessoal;
 use App\Models\Produto;
 use App\Models\Veiculo;
 use App\Modules\Imobilizados\Models\ProdutosImobilizados;
 use App\Modules\Imobilizados\Models\TipoImobilizado;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

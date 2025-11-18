@@ -158,7 +158,7 @@ class PermissionHelper
     {
         try {
             if ($userId) {
-                $user = \App\Models\User::find($userId);
+                $user = \App\Modules\Configuracoes\Models\User::find($userId);
                 if ($user) {
                     $user->clearPermissionCache();
                 }

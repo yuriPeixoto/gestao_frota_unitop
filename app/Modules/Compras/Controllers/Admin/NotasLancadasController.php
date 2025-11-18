@@ -5,7 +5,7 @@ namespace App\Modules\Compras\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Fornecedor;
 use App\Models\NotaFiscalAvulsa;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use App\Models\VListarPedidosNf;
 use App\Traits\ExportableTrait;
 use App\Traits\LoteDownloadTrait;

@@ -4,7 +4,7 @@ namespace App\Modules\Certificados\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
 use App\Models\CategoriaVeiculo;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Certificados\Models\IpvaVeiculo;
 use App\Modules\Certificados\Models\LicenciamentoVeiculo;
 use App\Models\Veiculo;

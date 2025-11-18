@@ -3,7 +3,7 @@
 namespace App\Modules\Certificados\Controllers\Vencimentario;
 
 use App\Http\Controllers\Controller;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Modules\Certificados\Models\LicenciamentoVeiculo;
 use App\Models\Veiculo;
 use App\Traits\ExportableTrait;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Modules\Configuracoes\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 

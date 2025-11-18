@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use App\Models\Produto;
 use App\Modules\Manutencao\Models\Servico;
-use App\Models\UnidadeProduto;
+use App\Modules\Configuracoes\Models\UnidadeProduto;
 
 trait ItemTraitSolicitacao
 {

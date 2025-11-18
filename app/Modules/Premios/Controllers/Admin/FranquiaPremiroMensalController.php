@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\SubCategoriaVeiculo;
-use App\Models\TipoEquipamento;
+use App\Modules\Configuracoes\Models\TipoEquipamento;
 use App\Models\TipoOperacao;
 use App\Models\CategoriaVeiculo;
 

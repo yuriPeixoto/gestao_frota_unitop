@@ -4,8 +4,8 @@ namespace App\Modules\Abastecimentos\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Abastecimentos\Models\AbastecimentoAtsTruckpagManual;
-use App\Models\TipoCategoria;
-use App\Models\TipoEquipamento;
+use App\Modules\Configuracoes\Models\TipoCategoria;
+use App\Modules\Configuracoes\Models\TipoEquipamento;
 use App\Models\Veiculo;
 use App\Models\VFilial;
 use App\Traits\ExportableTrait;

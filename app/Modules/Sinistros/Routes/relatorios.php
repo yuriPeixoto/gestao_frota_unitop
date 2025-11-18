@@ -9,7 +9,7 @@ use App\Modules\Sinistros\Controllers\Relatorios\RelatorioSinistro;
 use App\Modules\Sinistros\Controllers\Relatorios\RelatorioSinistroGeral;
 use App\Modules\Sinistros\Controllers\Relatorios\RelatorioSinistroll;
 use App\Modules\Sinistros\Controllers\SinistroController;
-use App\Http\Controllers\Admin\UserController;
+use App\Modules\Configuracoes\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 

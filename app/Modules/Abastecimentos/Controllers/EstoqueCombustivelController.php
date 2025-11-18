@@ -84,7 +84,7 @@ class EstoqueCombustivelController extends Controller
     /**
      * Determina qual filial ID usar baseado no acesso do usuário
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Modules\Configuracoes\Models\User  $user
      * @param  int|null  $filtroFilial
      * @return int|null
      */
@@ -110,7 +110,7 @@ class EstoqueCombustivelController extends Controller
     /**
      * Obter a lista de filiais acessíveis para o usuário
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Modules\Configuracoes\Models\User  $user
      * @return \Illuminate\Support\Collection
      */
     private function getAccessibleFiliais($user)
@@ -138,7 +138,7 @@ class EstoqueCombustivelController extends Controller
     /**
      * Get all the tank data organized by location with filial access control.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Modules\Configuracoes\Models\User  $user
      * @param  int|null  $filialId
      * @param  string|null  $dataInicio
      * @param  string|null  $dataFim
@@ -272,7 +272,7 @@ class EstoqueCombustivelController extends Controller
      * @param  string|null  $dataInicio
      * @param  string|null  $dataFim
      * @param  string|null  $dataEspecifica
-     * @param  \App\Models\User  $user
+     * @param  \App\Modules\Configuracoes\Models\User  $user
      * @param  int|null  $filialId
      * @param  string|null  $tipoMovimentacao
      * @return \Illuminate\Database\Query\Builder
@@ -424,7 +424,7 @@ class EstoqueCombustivelController extends Controller
         }
 
         // Limpar também caches de filiais acessíveis
-        $users = \App\Models\User::select('id')->get();
+        $users = \App\Modules\Configuracoes\Models\User::select('id')->get();
         foreach ($users as $user) {
             Cache::forget("filiais_acessiveis_{$user->id}");
             Cache::forget("user_accessible_filials_{$user->id}");

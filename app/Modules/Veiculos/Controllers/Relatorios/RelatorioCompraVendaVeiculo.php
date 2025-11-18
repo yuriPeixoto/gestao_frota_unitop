@@ -3,8 +3,8 @@
 namespace App\Modules\Veiculos\Controllers\Relatorios;
 
 use App\Http\Controllers\Controller;
-use App\Models\Departamento;
-use App\Models\Filial;
+use App\Modules\Configuracoes\Models\Departamento;
+use App\Modules\Configuracoes\Models\Filial;
 use App\Models\ModeloVeiculo;
 use App\Models\Veiculo;
 use App\Models\VveiculoCompraeBaixa;

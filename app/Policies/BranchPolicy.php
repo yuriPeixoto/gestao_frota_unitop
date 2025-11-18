@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Branch;
-use App\Models\User;
+use App\Modules\Configuracoes\Models\Branch;
+use App\Modules\Configuracoes\Models\User;
 use Illuminate\Auth\Access\Response;
 
 class BranchPolicy
